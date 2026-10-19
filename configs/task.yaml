@@ -1,0 +1,14 @@
+# 通用任务模板：空项由网页选择补齐；仅复制到当前任务，不回写本文件或机器人配置。
+schema_version: 1
+kind: task_template
+task:
+  schema_version: 1
+  kind: experiment
+  id: null
+  robot: null
+  policy: null
+  control: null
+  backend: gazebo-classic-ros1
+  world: null
+  spawn: {position: [0.0, 0.0, 0.65], rpy: [0.0, 0.0, 0.0]}
+  runtime: {gui: false, paused: false, duration_s: 600.0}

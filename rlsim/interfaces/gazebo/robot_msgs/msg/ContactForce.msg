@@ -1,0 +1,6 @@
+std_msgs/Header header
+
+geometry_msgs/Wrench FL_contact
+geometry_msgs/Wrench FR_contact
+geometry_msgs/Wrench RL_contact
+geometry_msgs/Wrench RR_contact

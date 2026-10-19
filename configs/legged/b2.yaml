@@ -1,0 +1,25 @@
+# Robot defaults, policy contracts and experiment presets. Vectors follow robot.joints.
+schema_version: 1
+kind: robot_profile
+id: b2
+robot:
+  robot_name: b2
+  variant: default
+  package: b2_description
+  package_path: robots/legged/b2_description
+  urdf: robots/legged/b2_description/urdf/b2_description.urdf
+  xacro: robots/legged/b2_description/xacro/robot.xacro
+  controllers: robots/legged/b2_description/config/robot_control.yaml
+  namespace: /b2_gazebo/
+  model_name: b2_gazebo
+  joints: [FL_hip_joint, FL_thigh_joint, FL_calf_joint, FR_hip_joint, FR_thigh_joint, FR_calf_joint, RL_hip_joint, RL_thigh_joint, RL_calf_joint,
+    RR_hip_joint, RR_thigh_joint, RR_calf_joint]
+  groups:
+    wheels: []
+    legs: [FL_hip_joint, FL_thigh_joint, FL_calf_joint, FR_hip_joint, FR_thigh_joint, FR_calf_joint, RL_hip_joint, RL_thigh_joint, RL_calf_joint,
+      RR_hip_joint, RR_thigh_joint, RR_calf_joint]
+  excluded_plugins: []
+control: null
+diagnostics: [Robot assets imported; no validated default control/policy contract.]
+policies: {}
+# 当前任务由 configs/task.yaml 和网页选择生成，不保存固定 experiments。

@@ -1,0 +1,51 @@
+# Robot defaults, policy contracts and experiment presets. Vectors follow robot.joints.
+schema_version: 1
+kind: robot_profile
+id: a1
+robot:
+  robot_name: a1
+  variant: default
+  package: a1_description
+  package_path: robots/legged/a1_description
+  urdf: robots/legged/a1_description/urdf/a1_description.urdf
+  xacro: robots/legged/a1_description/xacro/robot.xacro
+  controllers: robots/legged/a1_description/config/robot_control.yaml
+  namespace: /a1_gazebo/
+  model_name: a1_gazebo
+  joints: [FR_hip_joint, FR_thigh_joint, FR_calf_joint, FL_hip_joint, FL_thigh_joint, FL_calf_joint, RR_hip_joint, RR_thigh_joint, RR_calf_joint,
+    RL_hip_joint, RL_thigh_joint, RL_calf_joint]
+  groups:
+    wheels: []
+    legs: [FR_hip_joint, FR_thigh_joint, FR_calf_joint, FL_hip_joint, FL_thigh_joint, FL_calf_joint, RR_hip_joint, RR_thigh_joint, RR_calf_joint,
+      RL_hip_joint, RL_thigh_joint, RL_calf_joint]
+  excluded_plugins: []
+control: null
+diagnostics: [Robot assets imported; no validated default control/policy contract.]
+policies:
+  a1-legged-gym:
+    schema_version: 1
+    deployment:
+      id: a1-legged-gym
+      robots: [a1]
+      status: blocked
+      diagnostics: ['MISSING_POLICY_TYPE: base.yaml lacks policy_type required by ReadYamlBase; explicit inspection override does not fix runtime
+          loading', 'CONFIG_INVALID: Select a supported policy_type: dreamwaq, ts, ts_se']
+      model_directory: policies/legged/a1/legged_gym
+  a1-robot-lab:
+    schema_version: 1
+    deployment:
+      id: a1-robot-lab
+      robots: [a1]
+      status: blocked
+      diagnostics: ['MISSING_POLICY_TYPE: base.yaml lacks policy_type required by ReadYamlBase; explicit inspection override does not fix runtime
+          loading', 'CONFIG_INVALID: Select a supported policy_type: dreamwaq, ts, ts_se']
+      model_directory: policies/legged/a1/robot_lab
+  a1-wmp-traced-8000:
+    schema_version: 1
+    deployment:
+      id: a1-wmp-traced-8000
+      robots: [a1]
+      status: unconfigured
+      diagnostics: ['Model files imported; observation/action semantics, state bindings and control compatibility require an explicit policy contract.']
+      model_directory: policies/legged/a1/wmp/traced_8000
+# 当前任务由 configs/task.yaml 和网页选择生成，不保存固定 experiments。

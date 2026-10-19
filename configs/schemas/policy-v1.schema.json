@@ -1,0 +1,416 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:rlsim2sim:policy:1",
+  "title": "Configurable single-model inference policy",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "$ref": "#/$defs/name"
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "backend",
+        "file"
+      ],
+      "properties": {
+        "backend": {
+          "const": "onnxruntime"
+        },
+        "file": {
+          "$ref": "#/$defs/name"
+        }
+      }
+    },
+    "joints": {
+      "oneOf": [
+        {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/name"
+          }
+        },
+        {
+          "$ref": "#/$defs/valueReference"
+        }
+      ]
+    },
+    "observations": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/group"
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/name"
+      }
+    },
+    "states": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "input",
+          "output",
+          "shape"
+        ],
+        "properties": {
+          "input": {
+            "$ref": "#/$defs/name"
+          },
+          "output": {
+            "$ref": "#/$defs/name"
+          },
+          "shape": {
+            "$ref": "#/$defs/shape"
+          }
+        }
+      }
+    },
+    "actions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "count",
+        "output",
+        "reference",
+        "kp",
+        "kd",
+        "torque_limits",
+        "channels"
+      ],
+      "dependentRequired": {
+        "clip_lower": [
+          "clip_upper"
+        ],
+        "clip_upper": [
+          "clip_lower"
+        ]
+      },
+      "properties": {
+        "count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "shape": {
+          "$ref": "#/$defs/shape"
+        },
+        "output": {
+          "$ref": "#/$defs/name"
+        },
+        "reference": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/numbers"
+            },
+            {
+              "$ref": "#/$defs/valueReference"
+            }
+          ]
+        },
+        "kp": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/numbers"
+            },
+            {
+              "$ref": "#/$defs/valueReference"
+            }
+          ]
+        },
+        "kd": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/numbers"
+            },
+            {
+              "$ref": "#/$defs/valueReference"
+            }
+          ]
+        },
+        "torque_limits": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/numbers"
+            },
+            {
+              "$ref": "#/$defs/valueReference"
+            }
+          ]
+        },
+        "clip_lower": {
+          "$ref": "#/$defs/numbers"
+        },
+        "clip_upper": {
+          "$ref": "#/$defs/numbers"
+        },
+        "diagnostic": {
+          "enum": [
+            "controller_pd",
+            "legacy_reference_pd"
+          ]
+        },
+        "channels": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "joint",
+              "action",
+              "mode",
+              "scale"
+            ],
+            "properties": {
+              "joint": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "action": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "mode": {
+                "enum": [
+                  "position_offset",
+                  "position",
+                  "velocity",
+                  "torque"
+                ]
+              },
+              "scale": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "deployment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "robots",
+        "status",
+        "diagnostics",
+        "model_directory"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "robots": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "enum": [
+            "ready",
+            "blocked",
+            "unconfigured"
+          ]
+        },
+        "diagnostics": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "model_directory": {
+          "type": "string",
+          "pattern": "^policies/[^\\\\]+$"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "numbers": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "shape": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 1
+      }
+    },
+    "group": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "terms",
+        "clip"
+      ],
+      "properties": {
+        "clip": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "shape": {
+          "$ref": "#/$defs/shape"
+        },
+        "terms": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "source",
+              "width"
+            ],
+            "properties": {
+              "source": {
+                "$ref": "#/$defs/name"
+              },
+              "width": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "scale": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "$ref": "#/$defs/numbers"
+                  }
+                ]
+              },
+              "rotate_inverse": {
+                "type": "boolean"
+              },
+              "zero_indices": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            }
+          }
+        },
+        "history": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "offsets",
+            "layout",
+            "initialization"
+          ],
+          "properties": {
+            "offsets": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "layout": {
+              "enum": [
+                "time_major",
+                "term_major"
+              ]
+            },
+            "initialization": {
+              "enum": [
+                "zeros",
+                "repeat_first"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "valueReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "$ref"
+      ],
+      "properties": {
+        "$ref": {
+          "type": "string",
+          "pattern": "^[^#]+#/.*$"
+        }
+      }
+    }
+  },
+  "description": "Editable policy. Resolve workspace-relative whole-value $ref before structural and runtime validation. Blocked/unconfigured imports contain metadata only.",
+  "required": [
+    "schema_version"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "deployment"
+        ],
+        "properties": {
+          "deployment": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "blocked",
+                  "unconfigured"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "deployment"
+        ],
+        "properties": {
+          "id": false,
+          "model": false,
+          "joints": false,
+          "observations": false,
+          "inputs": false,
+          "states": false,
+          "actions": false
+        }
+      },
+      "else": {
+        "required": [
+          "schema_version",
+          "id",
+          "model",
+          "joints",
+          "observations",
+          "inputs",
+          "states",
+          "actions"
+        ]
+      }
+    }
+  ]
+}

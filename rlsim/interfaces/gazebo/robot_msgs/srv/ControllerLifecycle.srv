@@ -1,0 +1,8 @@
+string action
+string policy_manifest
+string robot_runtime_manifest
+---
+bool success
+string message
+bool running
+uint64 revision

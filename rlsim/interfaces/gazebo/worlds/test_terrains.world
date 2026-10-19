@@ -1,0 +1,2223 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version="1.7">
+  <world name="demo">
+    <gui fullscreen="0">
+      <camera name="user_camera">
+        <pose>-20 -8 10 0 0.35 0.0</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+    <physics type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+      <gravity>0 0 -9.81</gravity>
+      <ode>
+        <solver>
+          <type>quick</type>
+          <iters>50</iters>
+          <sor>1.3</sor>
+        </solver>
+        <constraints>
+          <cfm>0.0</cfm>
+          <erp>0.2</erp>
+          <contact_max_correcting_vel>10.0</contact_max_correcting_vel>
+          <contact_surface_layer>0.001</contact_surface_layer>
+        </constraints>
+      </ode>
+    </physics>
+    <scene>
+      <sky>
+        <clouds>
+          <speed>12</speed>
+        </clouds>
+      </sky>
+    </scene>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <model name="all_terrains">
+      <static>true</static>
+      <link name="stairs_h20_d30__up_0">
+        <pose>0 6.15 0.1 0 0 1.57079633</pose>
+        <collision name="stairs_h20_d30__up_0_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h20_d30__up_0_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h20_d30__up_1">
+        <pose>0 6.45 0.3 0 0 1.57079633</pose>
+        <collision name="stairs_h20_d30__up_1_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h20_d30__up_1_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h20_d30__up_2">
+        <pose>0 6.75 0.5 0 0 1.57079633</pose>
+        <collision name="stairs_h20_d30__up_2_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h20_d30__up_2_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h20_d30__up_3">
+        <pose>0 7.05 0.7 0 0 1.57079633</pose>
+        <collision name="stairs_h20_d30__up_3_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h20_d30__up_3_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h20_d30__up_4">
+        <pose>0 7.35 0.9 0 0 1.57079633</pose>
+        <collision name="stairs_h20_d30__up_4_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h20_d30__up_4_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h20_d30__up_5">
+        <pose>0 7.65 1.1 0 0 1.57079633</pose>
+        <collision name="stairs_h20_d30__up_5_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h20_d30__up_5_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h20_d30__up_6">
+        <pose>0 7.95 1.3 0 0 1.57079633</pose>
+        <collision name="stairs_h20_d30__up_6_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h20_d30__up_6_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h20_d30__up_7">
+        <pose>0 8.25 1.5 0 0 1.57079633</pose>
+        <collision name="stairs_h20_d30__up_7_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h20_d30__up_7_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h20_d30__up_8">
+        <pose>0 8.55 1.7 0 0 1.57079633</pose>
+        <collision name="stairs_h20_d30__up_8_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h20_d30__up_8_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h20_d30__up_9">
+        <pose>0 8.85 1.9 0 0 1.57079633</pose>
+        <collision name="stairs_h20_d30__up_9_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h20_d30__up_9_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h20_d30__plat">
+        <pose>0 10 1.9 0 0 1.57079633</pose>
+        <collision name="stairs_h20_d30__plat_collision">
+          <geometry>
+            <box>
+              <size>2.0 5.0 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h20_d30__plat_visual">
+          <geometry>
+            <box>
+              <size>2.0 5.0 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h20_d30__down_0">
+        <pose>0 11.15 1.9 0 0 1.57079633</pose>
+        <collision name="stairs_h20_d30__down_0_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h20_d30__down_0_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h20_d30__down_1">
+        <pose>0 11.45 1.7 0 0 1.57079633</pose>
+        <collision name="stairs_h20_d30__down_1_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h20_d30__down_1_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h20_d30__down_2">
+        <pose>0 11.75 1.5 0 0 1.57079633</pose>
+        <collision name="stairs_h20_d30__down_2_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h20_d30__down_2_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h20_d30__down_3">
+        <pose>0 12.05 1.3 0 0 1.57079633</pose>
+        <collision name="stairs_h20_d30__down_3_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h20_d30__down_3_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h20_d30__down_4">
+        <pose>0 12.35 1.1 0 0 1.57079633</pose>
+        <collision name="stairs_h20_d30__down_4_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h20_d30__down_4_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h20_d30__down_5">
+        <pose>0 12.65 0.9 0 0 1.57079633</pose>
+        <collision name="stairs_h20_d30__down_5_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h20_d30__down_5_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h20_d30__down_6">
+        <pose>0 12.95 0.7 0 0 1.57079633</pose>
+        <collision name="stairs_h20_d30__down_6_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h20_d30__down_6_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h20_d30__down_7">
+        <pose>0 13.25 0.5 0 0 1.57079633</pose>
+        <collision name="stairs_h20_d30__down_7_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h20_d30__down_7_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h20_d30__down_8">
+        <pose>0 13.55 0.3 0 0 1.57079633</pose>
+        <collision name="stairs_h20_d30__down_8_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h20_d30__down_8_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h20_d30__down_9">
+        <pose>0 13.85 0.1 0 0 1.57079633</pose>
+        <collision name="stairs_h20_d30__down_9_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h20_d30__down_9_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h25_d30__up_0">
+        <pose>0 17.15 0.125 0 0 1.57079633</pose>
+        <collision name="stairs_h25_d30__up_0_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h25_d30__up_0_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h25_d30__up_1">
+        <pose>0 17.45 0.375 0 0 1.57079633</pose>
+        <collision name="stairs_h25_d30__up_1_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h25_d30__up_1_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h25_d30__up_2">
+        <pose>0 17.75 0.625 0 0 1.57079633</pose>
+        <collision name="stairs_h25_d30__up_2_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h25_d30__up_2_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h25_d30__up_3">
+        <pose>0 18.05 0.875 0 0 1.57079633</pose>
+        <collision name="stairs_h25_d30__up_3_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h25_d30__up_3_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h25_d30__up_4">
+        <pose>0 18.35 1.125 0 0 1.57079633</pose>
+        <collision name="stairs_h25_d30__up_4_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h25_d30__up_4_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h25_d30__up_5">
+        <pose>0 18.65 1.375 0 0 1.57079633</pose>
+        <collision name="stairs_h25_d30__up_5_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h25_d30__up_5_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h25_d30__up_6">
+        <pose>0 18.95 1.625 0 0 1.57079633</pose>
+        <collision name="stairs_h25_d30__up_6_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h25_d30__up_6_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h25_d30__up_7">
+        <pose>0 19.25 1.875 0 0 1.57079633</pose>
+        <collision name="stairs_h25_d30__up_7_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h25_d30__up_7_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h25_d30__up_8">
+        <pose>0 19.55 2.125 0 0 1.57079633</pose>
+        <collision name="stairs_h25_d30__up_8_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h25_d30__up_8_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h25_d30__up_9">
+        <pose>0 19.85 2.375 0 0 1.57079633</pose>
+        <collision name="stairs_h25_d30__up_9_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h25_d30__up_9_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h25_d30__plat">
+        <pose>0 21 2.375 0 0 1.57079633</pose>
+        <collision name="stairs_h25_d30__plat_collision">
+          <geometry>
+            <box>
+              <size>2.0 5.0 0.25</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h25_d30__plat_visual">
+          <geometry>
+            <box>
+              <size>2.0 5.0 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h25_d30__down_0">
+        <pose>0 22.15 2.375 0 0 1.57079633</pose>
+        <collision name="stairs_h25_d30__down_0_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h25_d30__down_0_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h25_d30__down_1">
+        <pose>0 22.45 2.125 0 0 1.57079633</pose>
+        <collision name="stairs_h25_d30__down_1_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h25_d30__down_1_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h25_d30__down_2">
+        <pose>0 22.75 1.875 0 0 1.57079633</pose>
+        <collision name="stairs_h25_d30__down_2_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h25_d30__down_2_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h25_d30__down_3">
+        <pose>0 23.05 1.625 0 0 1.57079633</pose>
+        <collision name="stairs_h25_d30__down_3_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h25_d30__down_3_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h25_d30__down_4">
+        <pose>0 23.35 1.375 0 0 1.57079633</pose>
+        <collision name="stairs_h25_d30__down_4_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h25_d30__down_4_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h25_d30__down_5">
+        <pose>0 23.65 1.125 0 0 1.57079633</pose>
+        <collision name="stairs_h25_d30__down_5_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h25_d30__down_5_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h25_d30__down_6">
+        <pose>0 23.95 0.875 0 0 1.57079633</pose>
+        <collision name="stairs_h25_d30__down_6_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h25_d30__down_6_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h25_d30__down_7">
+        <pose>0 24.25 0.625 0 0 1.57079633</pose>
+        <collision name="stairs_h25_d30__down_7_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h25_d30__down_7_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h25_d30__down_8">
+        <pose>0 24.55 0.375 0 0 1.57079633</pose>
+        <collision name="stairs_h25_d30__down_8_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h25_d30__down_8_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h25_d30__down_9">
+        <pose>0 24.85 0.125 0 0 1.57079633</pose>
+        <collision name="stairs_h25_d30__down_9_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h25_d30__down_9_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.25</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h30_d30__up_0">
+        <pose>0 28.15 0.15 0 0 1.57079633</pose>
+        <collision name="stairs_h30_d30__up_0_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h30_d30__up_0_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h30_d30__up_1">
+        <pose>0 28.45 0.45 0 0 1.57079633</pose>
+        <collision name="stairs_h30_d30__up_1_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h30_d30__up_1_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h30_d30__up_2">
+        <pose>0 28.75 0.75 0 0 1.57079633</pose>
+        <collision name="stairs_h30_d30__up_2_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h30_d30__up_2_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h30_d30__up_3">
+        <pose>0 29.05 1.05 0 0 1.57079633</pose>
+        <collision name="stairs_h30_d30__up_3_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h30_d30__up_3_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h30_d30__up_4">
+        <pose>0 29.35 1.35 0 0 1.57079633</pose>
+        <collision name="stairs_h30_d30__up_4_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h30_d30__up_4_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h30_d30__up_5">
+        <pose>0 29.65 1.65 0 0 1.57079633</pose>
+        <collision name="stairs_h30_d30__up_5_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h30_d30__up_5_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h30_d30__up_6">
+        <pose>0 29.95 1.95 0 0 1.57079633</pose>
+        <collision name="stairs_h30_d30__up_6_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h30_d30__up_6_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h30_d30__up_7">
+        <pose>0 30.25 2.25 0 0 1.57079633</pose>
+        <collision name="stairs_h30_d30__up_7_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h30_d30__up_7_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h30_d30__up_8">
+        <pose>0 30.55 2.55 0 0 1.57079633</pose>
+        <collision name="stairs_h30_d30__up_8_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h30_d30__up_8_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h30_d30__up_9">
+        <pose>0 30.85 2.85 0 0 1.57079633</pose>
+        <collision name="stairs_h30_d30__up_9_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h30_d30__up_9_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h30_d30__plat">
+        <pose>0 32 2.85 0 0 1.57079633</pose>
+        <collision name="stairs_h30_d30__plat_collision">
+          <geometry>
+            <box>
+              <size>2.0 5.0 0.3</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h30_d30__plat_visual">
+          <geometry>
+            <box>
+              <size>2.0 5.0 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h30_d30__down_0">
+        <pose>0 33.15 2.85 0 0 1.57079633</pose>
+        <collision name="stairs_h30_d30__down_0_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h30_d30__down_0_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h30_d30__down_1">
+        <pose>0 33.45 2.55 0 0 1.57079633</pose>
+        <collision name="stairs_h30_d30__down_1_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h30_d30__down_1_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h30_d30__down_2">
+        <pose>0 33.75 2.25 0 0 1.57079633</pose>
+        <collision name="stairs_h30_d30__down_2_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h30_d30__down_2_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h30_d30__down_3">
+        <pose>0 34.05 1.95 0 0 1.57079633</pose>
+        <collision name="stairs_h30_d30__down_3_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h30_d30__down_3_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h30_d30__down_4">
+        <pose>0 34.35 1.65 0 0 1.57079633</pose>
+        <collision name="stairs_h30_d30__down_4_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h30_d30__down_4_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h30_d30__down_5">
+        <pose>0 34.65 1.35 0 0 1.57079633</pose>
+        <collision name="stairs_h30_d30__down_5_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h30_d30__down_5_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h30_d30__down_6">
+        <pose>0 34.95 1.05 0 0 1.57079633</pose>
+        <collision name="stairs_h30_d30__down_6_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h30_d30__down_6_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h30_d30__down_7">
+        <pose>0 35.25 0.75 0 0 1.57079633</pose>
+        <collision name="stairs_h30_d30__down_7_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h30_d30__down_7_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h30_d30__down_8">
+        <pose>0 35.55 0.45 0 0 1.57079633</pose>
+        <collision name="stairs_h30_d30__down_8_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h30_d30__down_8_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="stairs_h30_d30__down_9">
+        <pose>0 35.85 0.15 0 0 1.57079633</pose>
+        <collision name="stairs_h30_d30__down_9_collision">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="stairs_h30_d30__down_9_visual">
+          <geometry>
+            <box>
+              <size>0.3 5.0 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.25 0.55 0.85 1</ambient>
+            <diffuse>0.25 0.55 0.85 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="ramp_30deg__ramp_up">
+        <pose>6 7.5 0.894374769 0 -0.523598776 1.57079633</pose>
+        <collision name="ramp_30deg__ramp_up_collision">
+          <geometry>
+            <box>
+              <size>3.4641016151377544 5.0 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="ramp_30deg__ramp_up_visual">
+          <geometry>
+            <box>
+              <size>3.4641016151377544 5.0 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.62 0.22 1</ambient>
+            <diffuse>0.9 0.62 0.22 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="ramp_30deg__platform">
+        <pose>6 10 1.75705081 0 0 1.57079633</pose>
+        <collision name="ramp_30deg__platform_collision">
+          <geometry>
+            <box>
+              <size>2.0 5.0 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="ramp_30deg__platform_visual">
+          <geometry>
+            <box>
+              <size>2.0 5.0 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.62 0.22 1</ambient>
+            <diffuse>0.9 0.62 0.22 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="ramp_30deg__ramp_down">
+        <pose>6 12.5 0.894374769 0 0.523598776 1.57079633</pose>
+        <collision name="ramp_30deg__ramp_down_collision">
+          <geometry>
+            <box>
+              <size>3.4641016151377544 5.0 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="ramp_30deg__ramp_down_visual">
+          <geometry>
+            <box>
+              <size>3.4641016151377544 5.0 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.62 0.22 1</ambient>
+            <diffuse>0.9 0.62 0.22 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="ramp_35deg__ramp_up">
+        <pose>6 18.5 1.07983251 0 -0.610865238 1.57079633</pose>
+        <collision name="ramp_35deg__ramp_up_collision">
+          <geometry>
+            <box>
+              <size>3.662323766284368 5.0 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="ramp_35deg__ramp_up_visual">
+          <geometry>
+            <box>
+              <size>3.662323766284368 5.0 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.62 0.22 1</ambient>
+            <diffuse>0.9 0.62 0.22 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="ramp_35deg__platform">
+        <pose>6 21 2.12562261 0 0 1.57079633</pose>
+        <collision name="ramp_35deg__platform_collision">
+          <geometry>
+            <box>
+              <size>2.0 5.0 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="ramp_35deg__platform_visual">
+          <geometry>
+            <box>
+              <size>2.0 5.0 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.62 0.22 1</ambient>
+            <diffuse>0.9 0.62 0.22 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="ramp_35deg__ramp_down">
+        <pose>6 23.5 1.07983251 0 0.610865238 1.57079633</pose>
+        <collision name="ramp_35deg__ramp_down_collision">
+          <geometry>
+            <box>
+              <size>3.662323766284368 5.0 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="ramp_35deg__ramp_down_visual">
+          <geometry>
+            <box>
+              <size>3.662323766284368 5.0 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.62 0.22 1</ambient>
+            <diffuse>0.9 0.62 0.22 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="ramp_40deg__ramp_up">
+        <pose>6 29.5 1.28949834 0 -0.698131701 1.57079633</pose>
+        <collision name="ramp_40deg__ramp_up_collision">
+          <geometry>
+            <box>
+              <size>3.916221867996836 5.0 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="ramp_40deg__ramp_up_visual">
+          <geometry>
+            <box>
+              <size>3.916221867996836 5.0 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.62 0.22 1</ambient>
+            <diffuse>0.9 0.62 0.22 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="ramp_40deg__platform">
+        <pose>6 32 2.54229889 0 0 1.57079633</pose>
+        <collision name="ramp_40deg__platform_collision">
+          <geometry>
+            <box>
+              <size>2.0 5.0 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="ramp_40deg__platform_visual">
+          <geometry>
+            <box>
+              <size>2.0 5.0 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.62 0.22 1</ambient>
+            <diffuse>0.9 0.62 0.22 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="ramp_40deg__ramp_down">
+        <pose>6 34.5 1.28949834 0 0.698131701 1.57079633</pose>
+        <collision name="ramp_40deg__ramp_down_collision">
+          <geometry>
+            <box>
+              <size>3.916221867996836 5.0 0.05</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="ramp_40deg__ramp_down_visual">
+          <geometry>
+            <box>
+              <size>3.916221867996836 5.0 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.62 0.22 1</ambient>
+            <diffuse>0.9 0.62 0.22 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="block_h060__block">
+        <pose>12 7.5 0.3 0 0 0</pose>
+        <collision name="block_h060__block_collision">
+          <geometry>
+            <box>
+              <size>5 3 0.6</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="block_h060__block_visual">
+          <geometry>
+            <box>
+              <size>5 3 0.6</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.35 0.7 0.4 1</ambient>
+            <diffuse>0.35 0.7 0.4 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="block_h080__block">
+        <pose>12 18.5 0.4 0 0 0</pose>
+        <collision name="block_h080__block_collision">
+          <geometry>
+            <box>
+              <size>5 3 0.8</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="block_h080__block_visual">
+          <geometry>
+            <box>
+              <size>5 3 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.35 0.7 0.4 1</ambient>
+            <diffuse>0.35 0.7 0.4 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <link name="block_h100__block">
+        <pose>12 29.5 0.5 0 0 0</pose>
+        <collision name="block_h100__block_collision">
+          <geometry>
+            <box>
+              <size>5 3 1</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.99</mu>
+                <mu2>0.99</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="block_h100__block_visual">
+          <geometry>
+            <box>
+              <size>5 3 1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.35 0.7 0.4 1</ambient>
+            <diffuse>0.35 0.7 0.4 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>0 0 0 0 0 -1.57079633</pose>
+    </model>
+  </world>
+</sdf>

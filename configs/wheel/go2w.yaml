@@ -1,0 +1,95 @@
+# Robot defaults, policy contracts and experiment presets. Vectors follow robot.joints.
+schema_version: 1
+kind: robot_profile
+id: go2w
+robot:
+  robot_name: go2w
+  variant: default
+  package: go2w_description
+  package_path: robots/wheel/go2w_description
+  urdf: robots/wheel/go2w_description/urdf/go2w_description.urdf
+  xacro: robots/wheel/go2w_description/xacro/robot.xacro
+  controllers: robots/wheel/go2w_description/config/robot_control.yaml
+  namespace: /go2w_gazebo/
+  model_name: go2w_gazebo
+  joints: [FL_hip_joint, FL_thigh_joint, FL_calf_joint, FL_foot_joint, RL_hip_joint, RL_thigh_joint, RL_calf_joint, RL_foot_joint, FR_hip_joint,
+    FR_thigh_joint, FR_calf_joint, FR_foot_joint, RR_hip_joint, RR_thigh_joint, RR_calf_joint, RR_foot_joint]
+  groups:
+    wheels: [FL_foot_joint, RL_foot_joint, FR_foot_joint, RR_foot_joint]
+    legs: [FL_hip_joint, FL_thigh_joint, FL_calf_joint, RL_hip_joint, RL_thigh_joint, RL_calf_joint, FR_hip_joint, FR_thigh_joint, FR_calf_joint,
+      RR_hip_joint, RR_thigh_joint, RR_calf_joint]
+  excluded_plugins: []
+control:
+  id: go2w-default
+  timing: {control_dt: 0.005, decimation: 4}
+  startup:
+    position: [0.0, 0.8, -1.5, 0.0, 0.0, 0.8, -1.5, 0.0, 0.0, 0.8, -1.5, 0.0, 0.0, 0.8, -1.5, 0.0]
+    kp: [70.0, 70.0, 70.0, 0.0, 70.0, 70.0, 70.0, 0.0, 70.0, 70.0, 70.0, 0.0, 70.0, 70.0, 70.0, 0.0]
+    kd: [5.0, 5.0, 5.0, 0.5, 5.0, 5.0, 5.0, 0.5, 5.0, 5.0, 5.0, 0.5, 5.0, 5.0, 5.0, 0.5]
+    torque_limits: [23.5, 23.5, 23.5, 23.5, 23.5, 23.5, 23.5, 23.5, 23.5, 23.5, 23.5, 23.5, 23.5, 23.5, 23.5, 23.5]
+  transition:
+    kp: [70.0, 70.0, 70.0, 0.0, 70.0, 70.0, 70.0, 0.0, 70.0, 70.0, 70.0, 0.0, 70.0, 70.0, 70.0, 0.0]
+    kd: [5.0, 5.0, 5.0, 0.5, 5.0, 5.0, 5.0, 0.5, 5.0, 5.0, 5.0, 0.5, 5.0, 5.0, 5.0, 0.5]
+    prone: [0.0, 1.36, -2.65, 0.0, 0.0, 1.36, -2.65, 0.0, 0.0, 1.36, -2.65, 0.0, 0.0, 1.36, -2.65, 0.0]
+    pre_stand_s: 1.0
+    stand_s: 2.0
+    sit_s: 2.5
+    passive_damping: 8.0
+policies:
+  go2w-robot-lab:
+    schema_version: 1
+    deployment:
+      id: go2w-robot-lab
+      robots: [go2w]
+      status: blocked
+      diagnostics: ['CONFIG_INVALID: ''observations_ts''']
+      model_directory: policies/wheel/go2w/robot_lab
+  go2w-ts-v001:
+    schema_version: 1
+    id: go2w-ts-v001
+    model: {backend: onnxruntime, file: policies/wheel/go2w/legged_gym/policy_ts_b2w.onnx}
+    joints: {$ref: configs/wheel/go2w.yaml#/robot/joints}
+    observations:
+      proprio:
+        terms:
+        - {source: angular_velocity, width: 3, scale: 0.25, rotate_inverse: true}
+        - {source: gravity, width: 3, rotate_inverse: true}
+        - {source: command, width: 3, scale: [2, 2, 0.25]}
+        - {source: joint_position_relative, width: 16, scale: 1.0, zero_indices: [3, 7, 11, 15]}
+        - {source: joint_velocity, width: 16, scale: 0.05}
+        - {source: previous_action, width: 16}
+        clip: 100.0
+        history: {offsets: [], layout: time_major, initialization: zeros}
+    inputs: {obs: proprio}
+    states:
+    - {input: h, output: he, shape: [3, 1, 256]}
+    - {input: c, output: ce, shape: [3, 1, 256]}
+    actions:
+      count: 16
+      output: actions
+      reference: {$ref: configs/wheel/go2w.yaml#/control/startup/position}
+      kp: [50, 50, 50, 0.0, 50, 50, 50, 0.0, 50, 50, 50, 0.0, 50, 50, 50, 0.0]
+      kd: [1, 1, 1, 0.5, 1, 1, 1, 0.5, 1, 1, 1, 0.5, 1, 1, 1, 0.5]
+      torque_limits: {$ref: configs/wheel/go2w.yaml#/control/startup/torque_limits}
+      diagnostic: legacy_reference_pd
+      channels:
+      - {joint: 0, action: 0, mode: position_offset, scale: 0.25}
+      - {joint: 1, action: 1, mode: position_offset, scale: 0.25}
+      - {joint: 2, action: 2, mode: position_offset, scale: 0.25}
+      - {joint: 3, action: 3, mode: velocity, scale: 10}
+      - {joint: 4, action: 4, mode: position_offset, scale: 0.25}
+      - {joint: 5, action: 5, mode: position_offset, scale: 0.25}
+      - {joint: 6, action: 6, mode: position_offset, scale: 0.25}
+      - {joint: 7, action: 7, mode: velocity, scale: 10}
+      - {joint: 8, action: 8, mode: position_offset, scale: 0.25}
+      - {joint: 9, action: 9, mode: position_offset, scale: 0.25}
+      - {joint: 10, action: 10, mode: position_offset, scale: 0.25}
+      - {joint: 11, action: 11, mode: velocity, scale: 10}
+      - {joint: 12, action: 12, mode: position_offset, scale: 0.25}
+      - {joint: 13, action: 13, mode: position_offset, scale: 0.25}
+      - {joint: 14, action: 14, mode: position_offset, scale: 0.25}
+      - {joint: 15, action: 15, mode: velocity, scale: 10}
+      clip_lower: [-100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0, -100.0]
+      clip_upper: [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+    deployment: {id: go2w-ts-v001, robots: [go2w], status: ready, diagnostics: [], model_directory: policies/wheel/go2w/legged_gym}
+# 当前任务由 configs/task.yaml 和网页选择生成，不保存固定 experiments。

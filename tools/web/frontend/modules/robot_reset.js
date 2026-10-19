@@ -1,0 +1,12 @@
+// Robot-only pose reset: service acknowledgement and telemetry confirmation; controls stay independent.
+(()=>{"use strict";const W=window.Workbench,{$,state}=W;
+class RobotReset{
+ constructor(){this.unit='deg';$('reset-angle-unit').onchange=()=>this.setUnit();$('reset-form').onsubmit=e=>{e.preventDefault();this.execute().catch(e=>W.notice(e.message))}}
+ load(spawn){if(!spawn)return;['x','y','z'].forEach((k,i)=>$('reset-'+k).value=spawn.position[i]);['roll','pitch','yaw'].forEach((k,i)=>$('reset-'+k).value=this.display(spawn.rpy[i]));W.feedback('reset-status','')}
+ display(rad){return Number((this.unit==='deg'?rad*180/Math.PI:rad).toFixed(6))}
+ payload(){const read=(keys,limit)=>keys.map(k=>{const n=$('reset-'+k);if(n.value.trim()===''||!Number.isFinite(n.valueAsNumber)||Math.abs(n.valueAsNumber)>limit)throw new Error('请输入有效的复位位置和姿态，并遵守输入范围。');return n.valueAsNumber});return{position:read(['x','y','z'],10000),rpy:read(['roll','pitch','yaw'],this.unit==='deg'?360:2*Math.PI).map(v=>this.unit==='deg'?v*Math.PI/180:v)}}
+ setUnit(){const next=$('reset-angle-unit').value;try{const pose=this.payload();this.unit=next;for(const [i,k] of ['roll','pitch','yaw'].entries()){const n=$('reset-'+k);n.min=next==='deg'?-360:-2*Math.PI;n.max=next==='deg'?360:2*Math.PI;n.value=this.display(pose.rpy[i]);n.step='any'}}catch(e){$('reset-angle-unit').value=this.unit;W.notice(e.message)}}
+ async execute(){if(state.robotResetBusy||state.poseResetPending)return;if(!W.live()||state.mode!=='live'||state.current?.telemetry?.signals?.controller?.data.reset_robot_mode!=='model_pose')throw new Error('机器人复位尚未就绪，请检查当前会话和控制器连接。');const pose=this.payload(),id=state.selected,at=Date.now()/1000;state.robotResetBusy=true;state.poseResetPending=null;W.feedback('reset-status','正在设置模型位姿，仿真与控制继续运行…');W.renderStatus();try{const result=await W.api(`/api/runs/${encodeURIComponent(id)}/command`,{type:'reset_robot',value:pose},16000);if(result.publication!=='completed'||result.transition_acknowledged!==true||!W.finite(result.reset_count))throw new Error('服务端尚未确认复位完成，当前状态未知，请检查遥测。');if(state.selected===id){state.poseResetPending={at,resetCount:result.reset_count};W.feedback('reset-status','服务端已确认复位，等待控制器遥测…');await W.service.poll()}}catch(e){state.poseResetPending=null;W.feedback('reset-status','复位未确认：'+e.message);throw e}finally{state.robotResetBusy=false;W.renderStatus()}}
+}
+W.robotReset=new RobotReset();
+})();

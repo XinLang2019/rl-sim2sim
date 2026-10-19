@@ -1,0 +1,2 @@
+# Offline configuration tools; no ROS, CUDA, Torch or Python ONNX runtime needed.
+PyYAML>=5.3,<7

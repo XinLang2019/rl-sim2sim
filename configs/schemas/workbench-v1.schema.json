@@ -1,0 +1,627 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Workbench telemetry and command v1",
+  "description": "ROS worker samples at 10 Hz; timestamps use Unix wall seconds except clock.data (ROS simulation seconds). Each signal retains its own receive timestamp. Missing and nonfinite numeric data use null. Controller arrays and names use policy joint order.",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/telemetry"
+    },
+    {
+      "$ref": "#/$defs/command"
+    },
+    {
+      "$ref": "#/$defs/render_status"
+    }
+  ],
+  "$defs": {
+    "controller": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "ready": {
+          "type": "boolean"
+        },
+        "fsm_state": {
+          "enum": [
+            "uninitialized",
+            "passive",
+            "stand",
+            "policy",
+            "sit"
+          ]
+        },
+        "policy_ready": {
+          "type": "boolean"
+        },
+        "fault": {
+          "type": "boolean"
+        },
+        "simulation_running": {
+          "type": "boolean"
+        },
+        "policy_steps": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "inference_ms": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "joint_names": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "q": {
+          "type": "array",
+          "items": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        },
+        "dq": {
+          "type": "array",
+          "items": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        },
+        "effort": {
+          "type": "array",
+          "items": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        },
+        "target_q": {
+          "type": "array",
+          "items": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        },
+        "target_dq": {
+          "type": "array",
+          "items": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        },
+        "kp": {
+          "type": "array",
+          "items": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        },
+        "kd": {
+          "type": "array",
+          "items": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        },
+        "tau_ff": {
+          "type": "array",
+          "items": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        },
+        "reset_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Monotonic successful robot or world reset count; starts a new telemetry segment without requiring clock rewind."
+        },
+        "reset_robot_supported": {
+          "type": "boolean",
+          "description": "Robot-only world-pose reset service is connected."
+        },
+        "reset_robot_mode": {
+          "const": "model_pose",
+          "description": "Only changes world pose; preserves controller, policy and simulation state."
+        }
+      },
+      "required": [
+        "schema_version",
+        "ready",
+        "fsm_state",
+        "policy_ready",
+        "fault",
+        "simulation_running",
+        "policy_steps",
+        "inference_ms",
+        "joint_names",
+        "q",
+        "dq",
+        "effort",
+        "target_q",
+        "target_dq",
+        "kp",
+        "kd",
+        "tau_ff",
+        "actions"
+      ],
+      "additionalProperties": false
+    },
+    "telemetry": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "type": {
+          "const": "telemetry"
+        },
+        "wall_time": {
+          "type": "number"
+        },
+        "service_received_at": {
+          "type": "number"
+        },
+        "signals": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "controller": {
+              "type": "object",
+              "properties": {
+                "received_at": {
+                  "type": "number"
+                },
+                "data": {
+                  "$ref": "#/$defs/controller"
+                }
+              },
+              "required": [
+                "received_at",
+                "data"
+              ],
+              "additionalProperties": false
+            },
+            "clock": {
+              "type": "object",
+              "properties": {
+                "received_at": {
+                  "type": "number"
+                },
+                "data": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "received_at",
+                "data"
+              ],
+              "additionalProperties": false
+            },
+            "model": {
+              "type": "object",
+              "properties": {
+                "received_at": {
+                  "type": "number"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "position": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    },
+                    "quaternion": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      },
+                      "minItems": 4,
+                      "maxItems": 4
+                    },
+                    "linear_velocity": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    },
+                    "angular_velocity": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      },
+                      "minItems": 3,
+                      "maxItems": 3
+                    }
+                  },
+                  "required": [
+                    "position",
+                    "quaternion",
+                    "linear_velocity",
+                    "angular_velocity"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "received_at",
+                "data"
+              ],
+              "additionalProperties": false
+            },
+            "joints": {
+              "type": "object",
+              "properties": {
+                "received_at": {
+                  "type": "number"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "names": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "q": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      }
+                    },
+                    "dq": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      }
+                    },
+                    "effort": {
+                      "type": "array",
+                      "items": {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "names",
+                    "q",
+                    "dq",
+                    "effort"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "received_at",
+                "data"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "type",
+        "wall_time",
+        "signals"
+      ],
+      "additionalProperties": false
+    },
+    "command": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "control"
+            },
+            "value": {
+              "enum": [
+                "stand",
+                "policy",
+                "sit",
+                "passive",
+                "reset",
+                "toggle"
+              ]
+            }
+          },
+          "required": [
+            "type",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "velocity"
+            },
+            "value": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "type": "number",
+                  "minimum": -2,
+                  "maximum": 2
+                },
+                {
+                  "type": "number",
+                  "minimum": -1.5,
+                  "maximum": 1.5
+                },
+                {
+                  "type": "number",
+                  "minimum": -3,
+                  "maximum": 3
+                }
+              ],
+              "items": false,
+              "minItems": 3,
+              "maxItems": 3
+            }
+          },
+          "required": [
+            "type",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "reset_robot"
+            },
+            "value": {
+              "type": "object",
+              "properties": {
+                "position": {
+                  "type": "array",
+                  "items": {
+                    "type": "number",
+                    "minimum": -10000,
+                    "maximum": 10000
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "rpy": {
+                  "type": "array",
+                  "items": {
+                    "type": "number",
+                    "minimum": -6.283185307179586,
+                    "maximum": 6.283185307179586
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                }
+              },
+              "required": [
+                "position",
+                "rpy"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "type",
+            "value"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "policy_pd": {
+      "type": "object",
+      "description": "Optional task-only PD and wheel velocity scaling on /api/check and /api/prepare. Arrays follow selected policy joint order.",
+      "properties": {
+        "joints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "maxItems": 32,
+          "uniqueItems": true
+        },
+        "kp": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 10000
+          },
+          "minItems": 1,
+          "maxItems": 32
+        },
+        "kd": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 10000
+          },
+          "minItems": 1,
+          "maxItems": 32
+        },
+        "vel_scale": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10000
+        }
+      },
+      "required": [
+        "joints",
+        "kp",
+        "kd"
+      ],
+      "additionalProperties": false
+    },
+    "camera_view": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "follow": {
+          "type": "boolean"
+        },
+        "azimuth": {
+          "type": "number",
+          "minimum": -6.283185307179586,
+          "maximum": 6.283185307179586
+        },
+        "elevation": {
+          "type": "number",
+          "minimum": 0.05,
+          "maximum": 1.5
+        },
+        "distance": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 250
+        },
+        "target": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": -10000,
+            "maximum": 10000
+          },
+          "minItems": 3,
+          "maxItems": 3
+        }
+      },
+      "required": [
+        "enabled",
+        "follow",
+        "azimuth",
+        "elevation",
+        "distance",
+        "target"
+      ],
+      "additionalProperties": false
+    },
+    "render_status": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "type": {
+          "const": "render_status"
+        },
+        "state": {
+          "enum": [
+            "idle",
+            "loading",
+            "streaming",
+            "waiting",
+            "failed"
+          ]
+        },
+        "error": {
+          "type": "string"
+        },
+        "sequence": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "frame_received_at": {
+          "type": "number"
+        },
+        "simulation_time": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "width": {
+          "const": 960
+        },
+        "height": {
+          "const": 540
+        },
+        "transport": {
+          "const": "gazebo-camera-jpeg"
+        },
+        "wall_time": {
+          "type": "number"
+        },
+        "received_at": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "schema_version",
+        "type",
+        "state",
+        "error",
+        "wall_time"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

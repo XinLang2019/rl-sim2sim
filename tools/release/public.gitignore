@@ -1,0 +1,25 @@
+# Generated workspaces, recordings and local state.
+/tools/build/
+/tools/runs/
+/videos/
+/build/
+/devel/
+/install/
+/log/
+/logs/
+/.catkin_tools/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+/.venv*/
+/.vscode/
+/.idea/
+.DS_Store
+*~
+.env
+.env.*
+!.env.example
+/.private/
+/.aws/
+/.codex/
+/.agents/

@@ -1,0 +1,25 @@
+# Robot defaults, policy contracts and experiment presets. Vectors follow robot.joints.
+schema_version: 1
+kind: robot_profile
+id: m20
+robot:
+  robot_name: m20
+  variant: default
+  package: m20_description
+  package_path: robots/wheel/m20_description
+  urdf: robots/wheel/m20_description/urdf/m20_description.urdf
+  xacro: robots/wheel/m20_description/xacro/robot.xacro
+  controllers: robots/wheel/m20_description/config/robot_control.yaml
+  namespace: /m20_gazebo/
+  model_name: m20_gazebo
+  joints: [fl_hipx_joint, fl_hipy_joint, fl_knee_joint, fl_wheel_joint, fr_hipx_joint, fr_hipy_joint, fr_knee_joint, fr_wheel_joint, hl_hipx_joint,
+    hl_hipy_joint, hl_knee_joint, hl_wheel_joint, hr_hipx_joint, hr_hipy_joint, hr_knee_joint, hr_wheel_joint]
+  groups:
+    wheels: [fl_wheel_joint, fr_wheel_joint, hl_wheel_joint, hr_wheel_joint]
+    legs: [fl_hipx_joint, fl_hipy_joint, fl_knee_joint, fr_hipx_joint, fr_hipy_joint, fr_knee_joint, hl_hipx_joint, hl_hipy_joint, hl_knee_joint,
+      hr_hipx_joint, hr_hipy_joint, hr_knee_joint]
+  excluded_plugins: []
+control: null
+diagnostics: [Robot assets imported; no validated default control/policy contract.]
+policies: {}
+# 当前任务由 configs/task.yaml 和网页选择生成，不保存固定 experiments。

@@ -1,0 +1,13 @@
+<library path="lib/librobot_controller">
+  <class name="robot_controller/RobotJointController"
+         type="robot_controller::RobotJointController"
+         base_class_type="controller_interface::ControllerBase">
+    <description>Joint position, velocity and feedforward effort controller.</description>
+  </class>
+  <!-- Existing robots/ assets keep their original plugin IDs. -->
+  <class name="robot_joint_controller/RobotJointController"
+         type="robot_controller::RobotJointController"
+         base_class_type="controller_interface::ControllerBase">
+    <description>Compatibility name for original robot asset configurations.</description>
+  </class>
+</library>

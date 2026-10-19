@@ -1,0 +1,8 @@
+# Model world pose only (m, rad). Preserve control, policy, joints and simulation state.
+# Target base pose in world coordinates; metres and radians.
+float64[3] position
+float64[3] rpy
+---
+bool success
+string message
+uint64 reset_count

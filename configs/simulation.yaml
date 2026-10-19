@@ -1,0 +1,25 @@
+# 共享的仿真后端、地形预设和录包设置；机器人参数见 configs/wheel/ 和 configs/legged/。
+schema_version: 1
+kind: simulation
+backends:
+  gazebo-classic-ros1:
+    adapter: gazebo_classic_ros1
+    physics: {step_size: 0.001, real_time_factor: 1.0, gravity: [0.0, 0.0, -9.81]}
+terrains:
+  flat:
+    generator: flat
+    parameters: {size: 100.0, friction: 0.99}
+  ramp:
+    generator: ramp
+    parameters: {size: 100.0, friction: 0.99, angle_deg: 20.0, run: 4.0, width: 3.0, start_x: 2.0, thickness: 0.2}
+  rough:
+    generator: rough
+    parameters: {size: 100.0, friction: 0.99, rows: 6, columns: 8, cell: 0.5, max_height: 0.12, start_x: 2.0}
+  stairs:
+    generator: stairs
+    parameters: {size: 100.0, friction: 0.99, steps: 6, rise: 0.15, tread: 0.3, width: 3.0, start_x: 2.0}
+recording:
+  # CSV 只记录当前机器人的已接入数据，不包含环境模型、图像及重复的逐关节 ROS 消息。
+  topics: [/clock, /gazebo/model_states, /cmd_vel, '{namespace}joint_states', '{namespace}telemetry']
+  include_joint_topics: false
+  buffer_mb: 64

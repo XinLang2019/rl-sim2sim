@@ -1,0 +1,57 @@
+# Robot defaults, policy contracts and experiment presets. Vectors follow robot.joints.
+schema_version: 1
+kind: robot_profile
+id: b2w
+robot:
+  robot_name: b2w
+  variant: default
+  package: b2w_description
+  package_path: robots/wheel/b2w_description
+  urdf: robots/wheel/b2w_description/urdf/b2w_description.urdf
+  xacro: robots/wheel/b2w_description/xacro/robot.xacro
+  controllers: robots/wheel/b2w_description/config/robot_control.yaml
+  namespace: /b2w_gazebo/
+  model_name: b2w_gazebo
+  joints: [FL_hip_joint, FL_thigh_joint, FL_calf_joint, FL_foot_joint, RL_hip_joint, RL_thigh_joint, RL_calf_joint, RL_foot_joint, FR_hip_joint,
+    FR_thigh_joint, FR_calf_joint, FR_foot_joint, RR_hip_joint, RR_thigh_joint, RR_calf_joint, RR_foot_joint]
+  groups:
+    wheels: [FL_foot_joint, RL_foot_joint, FR_foot_joint, RR_foot_joint]
+    legs: [FL_hip_joint, FL_thigh_joint, FL_calf_joint, RL_hip_joint, RL_thigh_joint, RL_calf_joint, FR_hip_joint, FR_thigh_joint, FR_calf_joint,
+      RR_hip_joint, RR_thigh_joint, RR_calf_joint]
+  excluded_plugins: []
+control: null
+diagnostics: [Robot assets imported; no validated default control/policy contract.]
+policies:
+  b2w-drwamwaq:
+    schema_version: 1
+    deployment:
+      id: b2w-drwamwaq
+      robots: [b2w]
+      status: unconfigured
+      diagnostics: ['Model files imported; observation/action semantics, state bindings and control compatibility require an explicit policy contract.']
+      model_directory: policies/wheel/b2w/drwamwaq
+  b2w-legged-gym:
+    schema_version: 1
+    deployment:
+      id: b2w-legged-gym
+      robots: [b2w]
+      status: blocked
+      diagnostics: ['MODEL_MISSING: policies/wheel/b2w/legged_gym/policy_ts_01_base.onnx does not exist']
+      model_directory: policies/wheel/b2w/legged_gym
+  b2w-robot-lab:
+    schema_version: 1
+    deployment:
+      id: b2w-robot-lab
+      robots: [b2w]
+      status: blocked
+      diagnostics: ['CONFIG_INVALID: ''observations_ts''']
+      model_directory: policies/wheel/b2w/robot_lab
+  b2w-ts:
+    schema_version: 1
+    deployment:
+      id: b2w-ts
+      robots: [b2w]
+      status: unconfigured
+      diagnostics: ['Model files imported; observation/action semantics, state bindings and control compatibility require an explicit policy contract.']
+      model_directory: policies/wheel/b2w/ts
+# 当前任务由 configs/task.yaml 和网页选择生成，不保存固定 experiments。
