@@ -77,7 +77,8 @@ class Resources{
    this.snapshotModel={file:modelFile,policy:id,robots:[$('robot').value],selectable:false,reason:'历史快照的源模型已不在当前目录中'};
    $('policy').add(new Option(modelFile.split('/').at(-1)+' · 历史快照',modelFile));$('policy').value=modelFile;
   }
-  $('import-status').replaceChildren(...models.map(m=>W.el('p','hint',m.file+' · '+m.reason)));
+  const missing=res('policy').filter(p=>p.data.robots.includes($('robot').value)&&p.availability?.exists===false);
+  $('import-status').replaceChildren(...models.map(m=>W.el('p','hint',m.file+' · '+m.reason)),...missing.map(p=>W.el('p','hint error',p.id+' · '+p.availability.error)));
  }
  async refreshModels(){
   if(this.parametersLocked())throw new Error('请先停止控制器，再刷新策略目录。');

@@ -5,7 +5,7 @@ The single script entry also works with the preceding server's static whitelist.
 """
 from pathlib import Path
 
-MODULES = ('core', 'service', 'telemetry', 'csv_import', 'renderer', 'screen_recording', 'controller', 'resources', 'chart_layout', 'chart_interaction', 'charts', 'charts_editor', 'logs', 'joystick', 'robot_reset', 'recordings', 'app')
+MODULES = ('core', 'service', 'telemetry', 'csv_import', 'renderer', 'screen_recording', 'controller', 'resources', 'chart_layout', 'chart_interaction', 'charts', 'charts_editor', 'logs', 'joystick', 'robot_reset', 'recordings', 'output_settings', 'app')
 
 def build():
     frontend = Path(__file__).resolve().parent / 'frontend'

@@ -467,7 +467,8 @@ class Resources{
    this.snapshotModel={file:modelFile,policy:id,robots:[$('robot').value],selectable:false,reason:'历史快照的源模型已不在当前目录中'};
    $('policy').add(new Option(modelFile.split('/').at(-1)+' · 历史快照',modelFile));$('policy').value=modelFile;
   }
-  $('import-status').replaceChildren(...models.map(m=>W.el('p','hint',m.file+' · '+m.reason)));
+  const missing=res('policy').filter(p=>p.data.robots.includes($('robot').value)&&p.availability?.exists===false);
+  $('import-status').replaceChildren(...models.map(m=>W.el('p','hint',m.file+' · '+m.reason)),...missing.map(p=>W.el('p','hint error',p.id+' · '+p.availability.error)));
  }
  async refreshModels(){
   if(this.parametersLocked())throw new Error('请先停止控制器，再刷新策略目录。');
@@ -1489,6 +1490,46 @@ W.robotReset=new RobotReset();
  W.recordings=new RecordingAnalysis();
 })();
 
+// module: output_settings
+// Service-owned output retention; independent of the simulation and recording.
+(() => {
+  'use strict';
+  const W = window.Workbench, {$, state} = W;
+  class OutputSettings {
+    constructor() {
+      this.value = 5; this.saving = false; this.available = false;
+      $('task-output-limit').onchange = () => this.save();
+    }
+    load() {
+      const capabilities = state.boot?.capabilities || {};
+      this.available = Array.isArray(capabilities.task_output_limit_options);
+      this.value = capabilities.task_output_limit ?? 5;
+      $('task-output-limit').value = String(this.value);
+      this.render();
+    }
+    render() {
+      $('task-output-limit').disabled = !this.available || !state.online || this.saving;
+    }
+    async save() {
+      if (this.saving || !this.available || !state.online) return;
+      const raw = $('task-output-limit').value, value = raw === 'all' ? 'all' : Number(raw);
+      this.saving = true; this.render();
+      try {
+        const result = await W.api('/api/settings/output', {task_output_limit: value});
+        this.value = result.task_output_limit;
+        state.boot.capabilities.task_output_limit = this.value;
+        W.notice(this.value === 'all' ? '已保存：保留所有任务日志。' : `已保存：保留最近 ${this.value} 次任务日志，下次生成任务时生效。`, true);
+      } catch (error) {
+        W.notice('保留设置保存失败：' + error.message);
+      } finally {
+        $('task-output-limit').value = String(this.value);
+        this.saving = false; this.render();
+      }
+    }
+  }
+  W.outputSettings = new OutputSettings();
+})();
+
 // module: app
 // Navigation and panels orchestrate services; controller telemetry confirms commands.
 (()=>{"use strict";const W=window.Workbench,{$,state,el,fmt}=W;
@@ -1496,7 +1537,7 @@ function commandName(v){return{stand:'站立',policy:'启用策略',sit:'坐下'
 function runName(v){return{prepared:'已准备',starting:'启动中',running:'进程运行',stopping:'结束中',finished:'已结束',failed:'失败',archived:'参数存档'}[v]||v}
 function bytes(v){return W.finite(v)?v<1048576?(v/1024).toFixed(1)+' KB':(v/1048576).toFixed(2)+' MB':'未提供'}
 W.renderContext=r=>{$('scene-title').textContent=r?(r.experiment.world?.split('/').at(-1)||r.selection.terrain):'仿真视图'};
-W.renderStatus=()=>{const s=state.current,entry=s?.telemetry?.signals?.controller,c=entry?.data,live=W.live(),owned=!!s?.owned;
+W.renderStatus=()=>{W.outputSettings.render();const s=state.current,entry=s?.telemetry?.signals?.controller,c=entry?.data,live=W.live(),owned=!!s?.owned;
  if(owned)state.activeId=s.run_id;if(s&&!owned&&['finished','failed'].includes(s.metadata.state)){const released=!!state.activeId;state.activeId='';state.stopping=false;if(released)W.refreshRuns().catch(()=>{});}W.resources.lock();for(const id of ['velocity-zero','data-velocity-zero'])$(id).disabled=!live||state.mode!=='live';
  W.pill('connection',!state.online?'服务断线':W.signalFresh('controller')?'遥测在线':owned?'遥测等待 / 过期':'服务在线 · ROS 未连接',!state.online?'bad':W.signalFresh('controller')?'good':owned?'warn':'');
  let sim=!s?'仿真未启动':live?(c.simulation_running?'仿真运行中':'仿真已暂停'):runName(s.metadata.state)+(owned?' · 状态未确认':'');if(state.stopping&&s?.metadata.state!=='finished')sim='正在结束实验';W.pill('simulation-state',sim,live?(c.simulation_running?'good':'blue'):s?.metadata.state==='failed'?'bad':'');W.pill('policy-state',live?(W.controller.status().unknown?'控制器状态未知':!W.controller.status().running?'控制器已停止':c.fault?'策略故障':c.fsm_state==='policy'?(c.policy_ready?'策略运行中':'策略等待就绪'):c.fsm_state==='stand'?'站立状态':c.fsm_state==='sit'?'坐下过渡':'被动阻尼'):(owned?'策略状态未知':'策略未启用'),live?(c.fault?'bad':c.fsm_state==='policy'?'blue':''):'');
@@ -1560,7 +1601,7 @@ function events(){$('reconnect').onclick=()=>location.reload();for(const n of do
  $('dismiss-notice').onclick=()=>$('notice').hidden=true;$('toggle-logs').onclick=()=>{$('log-drawer').hidden=!$('log-drawer').hidden;$('log-indicator').textContent=$('log-drawer').hidden?'已收起':'已展开';if(!$('log-drawer').hidden)W.refreshLogs()};$('close-logs').onclick=()=>{$('log-drawer').hidden=true;$('log-indicator').textContent='已收起'};$('refresh-logs').onclick=W.refreshLogs;for(const id of ['velocity-zero','data-velocity-zero'])$(id).onclick=()=>W.busy($(id),async()=>{if(state.mode!=='live')throw new Error('录包分析模式不发送机器人控制指令。');await W.joystick.zero();await W.joystick.lease.tail.catch(()=>{});await W.api(`/api/runs/${encodeURIComponent(state.selected)}/command`,{type:'velocity',value:[0,0,0]});W.notice('零速度指令已入队。',true)}).catch(()=>{});$('reset-view').onclick=()=>W.renderer.resetCamera();for(const b of document.querySelectorAll('[data-close-dialog]'))b.onclick=()=>$(b.dataset.closeDialog).close();
  for(const handle of document.querySelectorAll('[data-resize]')){let drag=null;handle.ondblclick=()=>{W.prefs[handle.dataset.resize==='left'?'left':'right']=handle.dataset.resize==='left'?288:264;setTheme();W.save()};handle.onpointerdown=e=>{drag={x:e.clientX,width:handle.dataset.resize==='left'?$('sidebar').getBoundingClientRect().width:$('control-panel').clientWidth};handle.setPointerCapture(e.pointerId)};handle.onpointermove=e=>{if(!drag)return;const left=handle.dataset.resize==='left',size=Math.max(left?260:240,Math.min(left?420:360,drag.width+(e.clientX-drag.x)*(left?1:-1)));document.documentElement.style.setProperty(left?'--left':'--right',size+'px');W.prefs[left?'left':'right']=size;W.charts.invalidate()};handle.onpointerup=handle.onpointercancel=()=>{drag=null;W.save()};handle.onkeydown=e=>{if(!['ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();const left=handle.dataset.resize==='left',key=left?'left':'right';W.prefs[key]=Math.max(left?260:240,Math.min(left?420:360,W.prefs[key]+(e.key==='ArrowRight'?8:-8)));setTheme();W.save()};}
 }
-async function initialize(){setTheme();events();state.boot=await W.api('/api/bootstrap',undefined,10000);state.online=true;state.boot.controls=state.boot.controls||[];state.boot.experiments=state.boot.experiments||[];state.boot.resources=state.boot.resources||[];W.resources.init();const runs=await W.refreshRuns();const owned=runs.find(r=>r.owned);if(owned)await W.service.select(owned.run_id);W.service.start();W.renderStatus();W.charts.signals();setInterval(()=>{if(!state.selected)W.refreshRuns().then(()=>{state.online=true;W.renderStatus()}).catch(()=>{state.online=false;W.renderStatus()});if(!$('log-drawer').hidden)W.refreshLogs();if(state.page==='data')W.refreshEvents()},4000);}
+async function initialize(){setTheme();events();state.boot=await W.api('/api/bootstrap',undefined,10000);state.online=true;W.outputSettings.load();state.boot.controls=state.boot.controls||[];state.boot.experiments=state.boot.experiments||[];state.boot.resources=state.boot.resources||[];W.resources.init();const runs=await W.refreshRuns();const owned=runs.find(r=>r.owned);if(owned)await W.service.select(owned.run_id);W.service.start();W.renderStatus();W.charts.signals();setInterval(()=>{if(!state.selected)W.refreshRuns().then(()=>{state.online=true;W.renderStatus()}).catch(()=>{state.online=false;W.renderStatus()});if(!$('log-drawer').hidden)W.refreshLogs();if(state.page==='data')W.refreshEvents()},4000);}
 W.navigate=navigate;W.initialize=initialize;initialize().catch(e=>{state.online=false;W.notice('工作台初始化失败：'+e.message);W.renderStatus()});
 })();
 

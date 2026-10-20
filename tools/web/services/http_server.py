@@ -54,6 +54,14 @@ class Handler(BaseHTTPRequestHandler):
         self.dispatch(True)
 
     def dispatch(self, mutation):
+        # A client may disconnect while an exception handler sends its response.
+        # That write is outside _dispatch's initial try block as well.
+        try:
+            self._dispatch(mutation)
+        except (BrokenPipeError, ConnectionResetError, ConnectionAbortedError):
+            self.close_connection = True
+
+    def _dispatch(self, mutation):
         try:
             host = self.headers.get("Host", "")
             if host not in self.server.allowed_hosts:
@@ -83,6 +91,8 @@ class Handler(BaseHTTPRequestHandler):
                 self.send({"schema_version": 1, "token": self.server.token, **manager.catalog()}); return
             if not mutation and path == "/api/runs":
                 self.send(manager.list_runs()); return
+            if path == "/api/settings/output":
+                self.send(manager.output_settings(payload if mutation else None)); return
             if not mutation and path == "/api/recordings":
                 self.send(manager.recordings()); return
             if mutation and path in ("/api/check", "/api/prepare", "/api/presets"):
@@ -130,8 +140,8 @@ class Handler(BaseHTTPRequestHandler):
             if not mutation and path in ("/", "/app.js", "/style.css"):
                 self.file(manager.root / "tools/web/frontend" / ({"/": "index.html"}.get(path, path[1:]))); return
             self.send({"error": "Not found"}, 404)
-        except (BrokenPipeError, ConnectionResetError):
-            pass
+        except (BrokenPipeError, ConnectionResetError, ConnectionAbortedError):
+            self.close_connection = True
         except FileExistsError as error:
             self.send({"error": str(error)}, 409)
         except FileNotFoundError as error:

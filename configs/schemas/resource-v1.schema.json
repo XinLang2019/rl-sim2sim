@@ -1420,6 +1420,16 @@
             "buffer_mb"
           ],
           "additionalProperties": false
+        },
+        "task_output_limit": {
+          "enum": [
+            5,
+            10,
+            20,
+            "all"
+          ],
+          "default": 5,
+          "description": "Maximum retained task outputs; all disables automatic cleanup."
         }
       },
       "required": [

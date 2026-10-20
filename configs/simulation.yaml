@@ -1,6 +1,8 @@
 # 共享的仿真后端、地形预设和录包设置；机器人参数见 configs/wheel/ 和 configs/legged/。
 schema_version: 1
 kind: simulation
+# 默认任务输出保留数量：5、10、20，或 all；网页保存的设置优先，生成新任务时生效。
+task_output_limit: 5
 backends:
   gazebo-classic-ros1:
     adapter: gazebo_classic_ros1

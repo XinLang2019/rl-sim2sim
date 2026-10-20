@@ -22,15 +22,6 @@ robot:
 control: null
 diagnostics: [Robot assets imported; no validated default control/policy contract.]
 policies:
-  go2-himloco:
-    schema_version: 1
-    deployment:
-      id: go2-himloco
-      robots: [go2]
-      status: blocked
-      diagnostics: ['MISSING_POLICY_TYPE: base.yaml lacks policy_type required by ReadYamlBase; explicit inspection override does not fix runtime
-          loading', 'CONFIG_INVALID: Select a supported policy_type: dreamwaq, ts, ts_se']
-      model_directory: policies/legged/go2/himloco
   go2-legged-gym:
     schema_version: 1
     deployment:
@@ -39,45 +30,12 @@ policies:
       status: unconfigured
       diagnostics: ['Model files imported; observation/action semantics, state bindings and control compatibility require an explicit policy contract.']
       model_directory: policies/legged/go2/legged_gym
-  go2-robot-lab:
+  go2-wmp:
     schema_version: 1
     deployment:
-      id: go2-robot-lab
-      robots: [go2]
-      status: blocked
-      diagnostics: ['MISSING_POLICY_TYPE: base.yaml lacks policy_type required by ReadYamlBase; explicit inspection override does not fix runtime
-          loading', 'CONFIG_INVALID: Select a supported policy_type: dreamwaq, ts, ts_se']
-      model_directory: policies/legged/go2/robot_lab
-  go2-wmp-traced-1:
-    schema_version: 1
-    deployment:
-      id: go2-wmp-traced-1
+      id: go2-wmp
       robots: [go2]
       status: unconfigured
       diagnostics: ['Model files imported; observation/action semantics, state bindings and control compatibility require an explicit policy contract.']
-      model_directory: policies/legged/go2/wmp/traced_1
-  go2-wmp-traced-2:
-    schema_version: 1
-    deployment:
-      id: go2-wmp-traced-2
-      robots: [go2]
-      status: unconfigured
-      diagnostics: ['Model files imported; observation/action semantics, state bindings and control compatibility require an explicit policy contract.']
-      model_directory: policies/legged/go2/wmp/traced_2
-  go2-wmp-traced-9500:
-    schema_version: 1
-    deployment:
-      id: go2-wmp-traced-9500
-      robots: [go2]
-      status: unconfigured
-      diagnostics: ['Model files imported; observation/action semantics, state bindings and control compatibility require an explicit policy contract.']
-      model_directory: policies/legged/go2/wmp/traced_9500
-  go2-wtw:
-    schema_version: 1
-    deployment:
-      id: go2-wtw
-      robots: [go2]
-      status: unconfigured
-      diagnostics: ['Model files imported; observation/action semantics, state bindings and control compatibility require an explicit policy contract.']
-      model_directory: policies/legged/go2/wtw
+      model_directory: policies/legged/go2/wmp
 # 当前任务由 configs/task.yaml 和网页选择生成，不保存固定 experiments。

@@ -31,15 +31,6 @@ policies:
       diagnostics: ['MISSING_POLICY_TYPE: base.yaml lacks policy_type required by ReadYamlBase; explicit inspection override does not fix runtime
           loading', 'CONFIG_INVALID: Select a supported policy_type: dreamwaq, ts, ts_se']
       model_directory: policies/legged/a1/legged_gym
-  a1-robot-lab:
-    schema_version: 1
-    deployment:
-      id: a1-robot-lab
-      robots: [a1]
-      status: blocked
-      diagnostics: ['MISSING_POLICY_TYPE: base.yaml lacks policy_type required by ReadYamlBase; explicit inspection override does not fix runtime
-          loading', 'CONFIG_INVALID: Select a supported policy_type: dreamwaq, ts, ts_se']
-      model_directory: policies/legged/a1/robot_lab
   a1-wmp-traced-8000:
     schema_version: 1
     deployment:

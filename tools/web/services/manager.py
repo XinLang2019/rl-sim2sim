@@ -25,7 +25,8 @@ from .controller_lifecycle import ControllerLifecycle
 from .processes import Recorder, stop_child, recording_topics
 from rlsim_support.references import resolve_values
 from rlsim_support.runtime import quiet_ros_environment
-from rlsim_support.retention import TASK_OUTPUT_LIMIT, output_guard, output_lease, prune_task_outputs
+from rlsim_support.retention import output_guard, output_lease, prune_task_outputs, task_output_limit, set_task_output_limit
+from rlsim_support.catalog import TASK_OUTPUT_LIMIT_OPTIONS
 
 DOWNLOADS = {"resolved_config.json", "parameters.log", "recording.log", "recording.json"}
 
@@ -80,7 +81,8 @@ class Manager(ControllerLifecycle):
         return self.terminal_metadata.get(run_id, {"schema_version": 1, "run_id": run_id, "state": "archived"})
 
     def catalog(self):
-        items = Catalog(self.root).list()
+        catalog = Catalog(self.root)
+        items = catalog.list()
         details, limits = {}, {}
         for item in items:
             try:
@@ -95,13 +97,25 @@ class Manager(ControllerLifecycle):
             except (ConfigError, OSError, ET.ParseError, ValueError) as error:
                 item["availability"] = {"exists": False, "error": str(error)}
         return {"resources": items, "task_template": task_template(self.root),
-                "policy_details": details, "models": model_inventory(self.root, details=details), "joint_limits": limits,
+                "policy_details": details, "models": model_inventory(self.root, catalog=catalog, details=details), "joint_limits": limits,
                 "capabilities": {"video_recording": bool(shutil.which("ffmpeg")), "renderer": "gazebo-camera-jpeg", "web_renderer": True, "render_frame_wait": True, "replay": False,
                     "policy_pd": True, "policy_reference": True, "robot_reset": True, "single_step": False, "hot_parameters": False, "controller_reload": True, "recording_options": True, "markers": True,
-                    "recording_format": "csv", "recording_sample_hz": 10, "csv_analysis": True, "task_output_limit": TASK_OUTPUT_LIMIT, "watchdog_s": .6, "velocity_limits": [2, 1.5, 3]},
+                    "recording_format": "csv", "recording_sample_hz": 10, "csv_analysis": True,
+                    "task_output_limit": task_output_limit(self.root), "task_output_limit_options": list(TASK_OUTPUT_LIMIT_OPTIONS),
+                    "watchdog_s": .6, "velocity_limits": [2, 1.5, 3]},
                 "worlds": [file.relative_to(self.root).as_posix() for file in sorted((self.root / "rlsim/interfaces/gazebo/worlds").glob("*.world"))],
                 "controls": [{"path": item["manifest"], "data": item["data"]} for item in items if item["kind"] == "control"],
                 "experiments": [{"path": item["manifest"], "data": item["data"]} for item in items if item["kind"] == "experiment"]}
+
+    def output_settings(self, payload=None):
+        if payload is not None:
+            keys(payload, {"task_output_limit"}, context="output settings")
+            if self.closed:
+                raise ConfigError("The service is closing")
+            value = set_task_output_limit(self.root, payload["task_output_limit"])
+        else:
+            value = task_output_limit(self.root)
+        return {"task_output_limit": value, "options": list(TASK_OUTPUT_LIMIT_OPTIONS), "applies_on": "next_task"}
 
     def compile(self, payload, write=False):
         if self.closed:

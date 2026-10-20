@@ -36,14 +36,6 @@ control:
     sit_s: 2.5
     passive_damping: 8.0
 policies:
-  go2w-robot-lab:
-    schema_version: 1
-    deployment:
-      id: go2w-robot-lab
-      robots: [go2w]
-      status: blocked
-      diagnostics: ['CONFIG_INVALID: ''observations_ts''']
-      model_directory: policies/wheel/go2w/robot_lab
   go2w-ts-v001:
     schema_version: 1
     id: go2w-ts-v001

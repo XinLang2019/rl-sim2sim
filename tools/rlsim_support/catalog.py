@@ -8,6 +8,14 @@ import yaml
 from .validation import ConfigError, UniqueLoader
 from .references import resolve_values
 
+TASK_OUTPUT_LIMIT_OPTIONS = (5, 10, 20, "all")
+
+
+def validate_task_output_limit(value):
+    if not ((type(value) is int and value in TASK_OUTPUT_LIMIT_OPTIONS) or value == "all"):
+        raise ConfigError("任务日志保留数量只支持 5、10、20 或 all（保存所有）")
+    return value
+
 FIELDS = {
     "robot": {"schema_version", "kind", "id", "robot_name", "variant", "package", "package_path", "urdf", "xacro", "controllers", "namespace", "model_name", "joints", "groups", "excluded_plugins"},
     "policy": {"schema_version", "kind", "id", "robots", "config"},
@@ -97,7 +105,9 @@ def validate_resource(data, kind):
         else:
             keys(data, FIELDS[kind], {"overrides", "model_file"}, context=kind)
     else:
-        keys(data, FIELDS[kind] - {"experiments"} if kind == "robot_profile" else FIELDS[kind], {"diagnostics", "experiments"} if kind == "robot_profile" else (), context=kind)
+        keys(data, FIELDS[kind] - {"experiments"} if kind == "robot_profile" else FIELDS[kind], {"diagnostics", "experiments"} if kind == "robot_profile" else {"task_output_limit"} if kind == "simulation" else (), context=kind)
+    if kind == "simulation" and "task_output_limit" in data:
+        validate_task_output_limit(data["task_output_limit"])
     if type(data["schema_version"]) is not int or data["schema_version"] != 1 or data["kind"] != kind:
         raise ConfigError("Unsupported {} schema".format(kind))
     if kind != "simulation":
@@ -145,6 +155,7 @@ class Catalog:
         self.root = Path(root).resolve()
         self.entries = {}
         self.deployments = {}
+        self.policy_availability = {}
         def register(path, data):
             key = (data["kind"], data["id"])
             if key in self.entries:
@@ -176,7 +187,7 @@ class Catalog:
         for path, owner, policy_id, document in documents:
             metadata = document.get("deployment") if isinstance(document, dict) else None
             keys(metadata, {"id", "robots", "status", "diagnostics", "model_directory"}, context="policy deployment")
-            directory = path_in(self.root, metadata["model_directory"], exists=metadata["status"] != "blocked")
+            directory = path_in(self.root, metadata["model_directory"], exists=False)
             if self.root / "policies" not in directory.parents:
                 raise ConfigError("Model directory must be inside policies/")
             if directory.exists() and not directory.is_dir():
@@ -202,6 +213,14 @@ class Catalog:
                     raise ConfigError("Unknown policy robot: " + robot_id)
             if len(set(metadata["robots"])) != len(metadata["robots"]):
                 raise ConfigError("Policy robots must be unique")
+            # Resource pruning must not make unrelated robots unavailable.
+            # Derive availability without rewriting the user's source contract.
+            metadata = copy.deepcopy(metadata)
+            missing = None if directory.is_dir() else "策略目录不存在：" + metadata["model_directory"]
+            self.policy_availability[policy_id] = {"exists": missing is None, "error": missing}
+            if missing:
+                metadata["status"] = "blocked"
+                metadata["diagnostics"].append(missing)
             register(path, {"schema_version": 1, "kind": "policy", "id": metadata["id"],
                             "robots": metadata["robots"], "config": path.relative_to(self.root).as_posix() + "#/policies/" + policy_id})
             self.deployments[policy_id] = metadata
@@ -236,5 +255,5 @@ class Catalog:
     def list(self):
         return [{"kind": kind, "id": resource_id,
                  "manifest": data["config"] if kind == "policy" else path.relative_to(self.root).as_posix() + ("#/experiments/" + resource_id if kind == "experiment" else ""),
-                 "data": data, **({"deployment": self.deployments[resource_id]} if kind == "policy" else {})}
+                 "data": data, **({"deployment": self.deployments[resource_id], "availability": self.policy_availability[resource_id]} if kind == "policy" else {})}
                 for (kind, resource_id), (path, data) in sorted(self.entries.items())]

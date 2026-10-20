@@ -97,7 +97,8 @@ def resolve(root, experiment, terrain_id=None, terrain_parameters=None, policy_r
     policy_file = path_in(root, filename)
     policy_location = str(policy_file) + ("#" + pointer if separator else "")
     policy = load_yaml(policy_location)
-    metadata = policy.pop("deployment", None)
+    policy.pop("deployment", None)
+    metadata = catalog.deployments[exp["policy"]]
     if metadata and metadata["status"] != "ready":
         raise ConfigError("Policy is {}: {}".format(metadata["status"], "; ".join(metadata["diagnostics"])))
     if "model_file" in exp:

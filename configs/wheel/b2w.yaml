@@ -38,14 +38,6 @@ policies:
       status: blocked
       diagnostics: ['MODEL_MISSING: policies/wheel/b2w/legged_gym/policy_ts_01_base.onnx does not exist']
       model_directory: policies/wheel/b2w/legged_gym
-  b2w-robot-lab:
-    schema_version: 1
-    deployment:
-      id: b2w-robot-lab
-      robots: [b2w]
-      status: blocked
-      diagnostics: ['CONFIG_INVALID: ''observations_ts''']
-      model_directory: policies/wheel/b2w/robot_lab
   b2w-ts:
     schema_version: 1
     deployment:
