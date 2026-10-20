@@ -9,8 +9,8 @@
     },
     {
       "path": ".gitignore",
-      "bytes": 284,
-      "sha256": "ff671f89d180807f4f16b129b8fceaf63ff10e36369487cee100228fc578e2a2"
+      "bytes": 338,
+      "sha256": "f4aed775161574ceecb8058979207bc9bb8e3630b523a6c1df9eb84a7b5abf8e"
     },
     {
       "path": "LICENSE",
@@ -19,8 +19,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 27966,
-      "sha256": "98dd99736c8008383e1d566386a178b384e0cd3d4e07eb9a2ec1febe0a1e0b68"
+      "bytes": 28937,
+      "sha256": "536cd5a8b8b5fa042680b5bd7e81bdafb770ae01b5066d07a72b6fe6422c7180"
     },
     {
       "path": "README_CN.md",
@@ -29,8 +29,8 @@
     },
     {
       "path": "README_EN.md",
-      "bytes": 851,
-      "sha256": "d86840a0a51f0a491fe2742c0ef9db31ef72b8ea8c637d93a0c007e22b9b283f"
+      "bytes": 850,
+      "sha256": "392a3fea4384ac543b6111504cd8d497ee9b916f2271186d38acaa24be3db0a2"
     },
     {
       "path": "build.sh",
@@ -39,23 +39,18 @@
     },
     {
       "path": "configs/legged/a1.yaml",
-      "bytes": 2286,
-      "sha256": "49307a33b1c4a1d4fc4f978a37d74d5b9d47fbfd0f3ed99dd3e6a0760c700662"
+      "bytes": 2275,
+      "sha256": "967451a96fd3a952d89e8365673e08d65bf1c2ce1de18b5132ea2598a5e32c77"
     },
     {
       "path": "configs/legged/b2.yaml",
-      "bytes": 1126,
-      "sha256": "fbf6136d3acdb27df4d8994a7d860e7ea424bde7f398192e980a560c45acc845"
+      "bytes": 1115,
+      "sha256": "aa03011e0ceab10007cd028af00461ac0b61dff3ddc5b0c5b01bfe65beffdf4f"
     },
     {
       "path": "configs/legged/go2.yaml",
-      "bytes": 3630,
-      "sha256": "efc0b10463dd2e73e6d4fcb8e4d436ccf0c3807a9a2d2a5711261415ab31fb1e"
-    },
-    {
-      "path": "configs/schemas/legacy-policy-contract-v1.schema.json",
-      "bytes": 4815,
-      "sha256": "ed41c1f93f129dd43f80c171c741e7e9808a0a3cec15a6dbd18d1f6a54e64d50"
+      "bytes": 3618,
+      "sha256": "e14c997539d7057bcd8bba34c2f0a2acf82586006176c431e484b02ea854b48a"
     },
     {
       "path": "configs/schemas/policy-v1.schema.json",
@@ -89,18 +84,18 @@
     },
     {
       "path": "configs/wheel/b2w.yaml",
-      "bytes": 2399,
-      "sha256": "a133f25260641452d297b45c69318b7c1c9d48d3ee9eed1cfe442c80842956a3"
+      "bytes": 2387,
+      "sha256": "d4642827e1920621c9176c5f659c6a95d7cacd5fa25dc9b97eff5103efa42b35"
     },
     {
       "path": "configs/wheel/go2w.yaml",
-      "bytes": 5013,
-      "sha256": "01c885d40adf74706d92f428f42518e56794256a454ffc73bc88f525eae75ebf"
+      "bytes": 5000,
+      "sha256": "b29e57450492a4be6f4649c3f74a4fa4d91b110ade3b5ea3883f1ccdca9b540b"
     },
     {
       "path": "configs/wheel/m20.yaml",
-      "bytes": 1258,
-      "sha256": "0d2ae70bbc24bcf04932c44f4fecab6cbba52d51cd3de179c543e9c4d5e5a9a6"
+      "bytes": 1246,
+      "sha256": "b91fcab75f376fcba1d6882102bc7f6ee6eb5f45fb2870fddc9278aea9a232aa"
     },
     {
       "path": "policies/legged/a1/legged_gym/model.pt",
@@ -414,13 +409,18 @@
     },
     {
       "path": "rlsim/interfaces/gazebo/rlsim_gazebo/CMakeLists.txt",
-      "bytes": 1906,
-      "sha256": "604637a57d54de21952ac3ec94cd60bcc56d6d66b041802d8e6e49a9c0841308"
+      "bytes": 1899,
+      "sha256": "f4f74da36c7a281ed49466b398253014b5b6cafafa76adffad8f8d4eb3187a5f"
     },
     {
       "path": "rlsim/interfaces/gazebo/rlsim_gazebo/include/rlsim_gazebo/gazebo_node.hpp",
       "bytes": 3503,
       "sha256": "bb356f2e656714c721038e203a3e9ac72cd044460dae52daca4ec4b2f5982457"
+    },
+    {
+      "path": "rlsim/interfaces/gazebo/rlsim_gazebo/models/robot_simulation.xacro",
+      "bytes": 1114,
+      "sha256": "04a699def83a2498c1bbfa876c324d37b3ab44912ddf69fc399cde55159aed6e"
     },
     {
       "path": "rlsim/interfaces/gazebo/rlsim_gazebo/models/web_camera.sdf",
@@ -538,39 +538,19 @@
       "sha256": "97584ad3e4b50ce87b9c544bc22662ae506d62fb927641ac2a6e5bd60bc82472"
     },
     {
+      "path": "robots/README.md",
+      "bytes": 2003,
+      "sha256": "f5ce329aab9da43e9ce1ca5ad19638c812a6ba716a9712e4c91ad01b919638bc"
+    },
+    {
       "path": "robots/legged/a1_description/CMakeLists.txt",
-      "bytes": 993,
-      "sha256": "88bb03c053ff40368d7563520e296122f465d31517258a5015384bed6824bb59"
+      "bytes": 196,
+      "sha256": "6fd0b7298ca86024b0cc56a9217ffb121142f4e21a84ff10cbcc26fc2b6477d2"
     },
     {
-      "path": "robots/legged/a1_description/config/robot_control.yaml",
-      "bytes": 1854,
-      "sha256": "9f4bf487e9d9467e7e6749af154201f6b016b8b046a3d104e3a3e8cb5d0b5584"
-    },
-    {
-      "path": "robots/legged/a1_description/config/robot_control_ros2.yaml",
-      "bytes": 529,
-      "sha256": "7730d1e7cb029c9ea094af6047f2d6b1bfe4c990de5c81e26cf3f10401c1acc5"
-    },
-    {
-      "path": "robots/legged/a1_description/launch/a1_rviz.launch",
-      "bytes": 851,
-      "sha256": "133f1459890a586cc914c71fdb1ea0c9ac5cacc2a33b491c0bf4601b5509c503"
-    },
-    {
-      "path": "robots/legged/a1_description/launch/a1_rviz.launch.py",
-      "bytes": 2287,
-      "sha256": "57c962007cba358773c56bf7a3a2b6569f3a47e99615abe44007422314603d53"
-    },
-    {
-      "path": "robots/legged/a1_description/launch/check_joint.rviz",
-      "bytes": 7623,
-      "sha256": "a3575c09ed54b0905359c1a3f07970586bf3f78dec6bd3671110650b6dff354e"
-    },
-    {
-      "path": "robots/legged/a1_description/launch/gazebo.launch.py",
-      "bytes": 2037,
-      "sha256": "d4e837a50cd928357af53c9ed2bf8dce22eb8d35615e1ea58cbe40ee010cdc86"
+      "path": "robots/legged/a1_description/config/controllers.yaml",
+      "bytes": 1263,
+      "sha256": "c225375208cab2bbe2bb6c254af68f8f8b940d7f4a03591fc671088c64094b1b"
     },
     {
       "path": "robots/legged/a1_description/meshes/calf.dae",
@@ -603,79 +583,34 @@
       "sha256": "512e8cfa5ebedfc4199afe172590d3d486461e42244ab5d439020111f9fc7e78"
     },
     {
-      "path": "robots/legged/a1_description/package.ros1.xml",
-      "bytes": 380,
-      "sha256": "d1abcb04773a0f9c60f4935ac5487418dc58c831cde760bc0740b4ffc966e6c6"
-    },
-    {
-      "path": "robots/legged/a1_description/package.ros2.xml",
-      "bytes": 616,
-      "sha256": "c03b76bfdd69565b2cba450d5aa85ddcbf62d73d26ebf0a79f9c66842e3a4204"
-    },
-    {
       "path": "robots/legged/a1_description/package.xml",
-      "bytes": 380,
-      "sha256": "d1abcb04773a0f9c60f4935ac5487418dc58c831cde760bc0740b4ffc966e6c6"
+      "bytes": 650,
+      "sha256": "e858e76f19635cc73a433d053c63e327b444005af1219943c9b4ad9aeeee637b"
     },
     {
-      "path": "robots/legged/a1_description/urdf/a1_description.urdf",
-      "bytes": 24624,
-      "sha256": "0c0b7fc8a698ab5c5ead6dce87638424e3c5d8b9238d18062fd11efa13f9a67d"
+      "path": "robots/legged/a1_description/urdf/gazebo.xacro",
+      "bytes": 2910,
+      "sha256": "8ffdfd688580a4d9063eb8325c6205202109bf0fc98e2a5c9aa7b6be325aa36d"
     },
     {
-      "path": "robots/legged/a1_description/xacro/gazebo.xacro",
-      "bytes": 12352,
-      "sha256": "2fe94effad112da353118e02e993d7e63827710fb348f9b32c8803445e71c5e7"
-    },
-    {
-      "path": "robots/legged/a1_description/xacro/robot.xacro",
-      "bytes": 696,
-      "sha256": "487fca130f650e46e6567f9499cf1032d142fe39cf22935de61e924581437b58"
+      "path": "robots/legged/a1_description/urdf/robot.urdf",
+      "bytes": 23604,
+      "sha256": "89656dadf5efe2bca0c050b450e7f9e277cbed4267592e8057d5cac3fe123f6c"
     },
     {
       "path": "robots/legged/b2_description/CMakeLists.txt",
-      "bytes": 994,
-      "sha256": "05e184471c8da33fc767b0da77be2b17b366ac78bbf72203fb4b9868e4922b1b"
+      "bytes": 196,
+      "sha256": "6c3729278eceead6586d54894054012e85b4c193648a7e5b85c674117e07ab92"
     },
     {
-      "path": "robots/legged/b2_description/README.md",
-      "bytes": 730,
-      "sha256": "9ac83b17cae6d22bac40f0dd85f1fb540bb95449a4ca4632786c5659d9290d1f"
-    },
-    {
-      "path": "robots/legged/b2_description/config/config.rviz",
-      "bytes": 9647,
-      "sha256": "5ddede83c11a286955f9cec7cd989299da6faa300806de1be6c7bea93e377923"
-    },
-    {
-      "path": "robots/legged/b2_description/config/robot_control.yaml",
-      "bytes": 1854,
-      "sha256": "79dfe2585e0c06f8e2a0b63ec9d3bf706e84b4a44b9d0fa75434bed6b6586543"
-    },
-    {
-      "path": "robots/legged/b2_description/config/robot_control_ros2.yaml",
-      "bytes": 529,
-      "sha256": "7730d1e7cb029c9ea094af6047f2d6b1bfe4c990de5c81e26cf3f10401c1acc5"
-    },
-    {
-      "path": "robots/legged/b2_description/launch/display.launch",
-      "bytes": 494,
-      "sha256": "c21c8620f95d3c7eca6f3ac6539c540788f109edec9e9367ec32cd472aa0620f"
-    },
-    {
-      "path": "robots/legged/b2_description/launch/gazebo.launch",
-      "bytes": 552,
-      "sha256": "b64cf12a359dcc423a950d1e3b8cbcd5cd72eb2840d55d2d0ac2684c27d574b5"
+      "path": "robots/legged/b2_description/config/controllers.yaml",
+      "bytes": 1263,
+      "sha256": "c09b7cbb6ee18ac20c1a6bfdb4f4c442f4e64e9841c6df9a2b3b1fa5f9498f85"
     },
     {
       "path": "robots/legged/b2_description/meshes/FL_calf.dae",
       "bytes": 2254502,
       "sha256": "1846981eee253a0891cfb641f7216a722a52ecf24fb32999b085e5e66254d186"
-    },
-    {
-      "path": "robots/legged/b2_description/meshes/FL_foot.dae",
-      "bytes": 1802978,
-      "sha256": "3a6dca10fc7dd69a0fe976e36e3a9b503e6a088a51d46cfae723e5b213a907a7"
     },
     {
       "path": "robots/legged/b2_description/meshes/FL_hip.dae",
@@ -738,64 +673,29 @@
       "sha256": "f4dd7682e883255ba9feece19c2eac9442549de1e6c2ff829f49cb2de718ca30"
     },
     {
-      "path": "robots/legged/b2_description/package.ros1.xml",
-      "bytes": 650,
-      "sha256": "d26969f4979f7c27fb468d6ca6640c3c609c3c231dfa6a7dd1564b904a4fc8ac"
-    },
-    {
-      "path": "robots/legged/b2_description/package.ros2.xml",
-      "bytes": 616,
-      "sha256": "b936dc1f5aa7467b4f0ce3170e797dbfb935f7467440f9218c18cf1864948847"
-    },
-    {
       "path": "robots/legged/b2_description/package.xml",
-      "bytes": 650,
-      "sha256": "d26969f4979f7c27fb468d6ca6640c3c609c3c231dfa6a7dd1564b904a4fc8ac"
+      "bytes": 685,
+      "sha256": "3638b8143794c44c8e28057db110d73b69e3064facb35f0f08d7a4836bd53ae7"
     },
     {
-      "path": "robots/legged/b2_description/urdf/b2_description.urdf",
-      "bytes": 40020,
-      "sha256": "184c6a506074d5a5552bbd7772192edd8a406c0dd5b35c3f7902359831a7f437"
+      "path": "robots/legged/b2_description/urdf/gazebo.xacro",
+      "bytes": 2267,
+      "sha256": "5f007758eb6fa9ad6947454beb7817d6700c7831506d1e944606e5624cf70f98"
     },
     {
-      "path": "robots/legged/b2_description/xacro/gazebo.xacro",
-      "bytes": 12448,
-      "sha256": "7ece9f0790574f4f35da3603dcfa01f68c2404d65440f246dd02242999dd9de9"
-    },
-    {
-      "path": "robots/legged/b2_description/xacro/robot.xacro",
-      "bytes": 262,
-      "sha256": "c6be0f1c11c91606f62ad8291c93750b68eb5aa835c430b9ea5bc299ecdb127c"
+      "path": "robots/legged/b2_description/urdf/robot.urdf",
+      "bytes": 32711,
+      "sha256": "4a1a52ff56ef00b35cf774803872f9442fd1f0c1eb76a00980bf03692950a044"
     },
     {
       "path": "robots/legged/go1_description/CMakeLists.txt",
-      "bytes": 993,
-      "sha256": "478df4f8f2fb20bdd82e74f83c8253d06b1ce27c9757e4f90517d51964e1f4d6"
+      "bytes": 197,
+      "sha256": "5f5baa5ded76716b2056161cdce6093e168d860bb8f7c18c5d8317185590ce50"
     },
     {
-      "path": "robots/legged/go1_description/config/robot_control.yaml",
-      "bytes": 1855,
-      "sha256": "0c404bb24a59b2fd0075b5a6a82c71817deac37aff22568894434a79b59c4e9b"
-    },
-    {
-      "path": "robots/legged/go1_description/config/robot_control_ori.yaml",
-      "bytes": 2287,
-      "sha256": "6163106c6757dd6fe68a8fc5db3b9d1a11f0b99f51bb18cba07ff4f3e29e38a9"
-    },
-    {
-      "path": "robots/legged/go1_description/config/robot_control_ros2.yaml",
-      "bytes": 529,
-      "sha256": "7730d1e7cb029c9ea094af6047f2d6b1bfe4c990de5c81e26cf3f10401c1acc5"
-    },
-    {
-      "path": "robots/legged/go1_description/launch/check_joint.rviz",
-      "bytes": 13177,
-      "sha256": "59bf30ea55823e9bce481a3c6a2b2e5b2b449617023b83439ade4eaf9df030ba"
-    },
-    {
-      "path": "robots/legged/go1_description/launch/go1_rviz.launch",
-      "bytes": 853,
-      "sha256": "6ae14b44015b5e216784e163d216f96fb22872878d2a6bb9b31d0028239d12a3"
+      "path": "robots/legged/go1_description/config/controllers.yaml",
+      "bytes": 1264,
+      "sha256": "16993992296f2cc6c02637723535da4d071718ebd486d487f3828d98d1b19398"
     },
     {
       "path": "robots/legged/go1_description/meshes/calf.dae",
@@ -833,94 +733,29 @@
       "sha256": "f863b0cc35e358d328f9cf9c79ebb0419c2440a7659c21cc559ec143d96a41c9"
     },
     {
-      "path": "robots/legged/go1_description/package.ros1.xml",
-      "bytes": 640,
-      "sha256": "03790609b7ddfa6a59b1094038f4ce03d88ef66979c67cfc1cf39e291183fc93"
-    },
-    {
-      "path": "robots/legged/go1_description/package.ros2.xml",
-      "bytes": 618,
-      "sha256": "ad0e58aa1a5be2106567b5d0fcae1b631384c57c06a45eebd9ce456aa79a296a"
-    },
-    {
       "path": "robots/legged/go1_description/package.xml",
-      "bytes": 640,
-      "sha256": "03790609b7ddfa6a59b1094038f4ce03d88ef66979c67cfc1cf39e291183fc93"
+      "bytes": 674,
+      "sha256": "be878268e67c14a8d2493d5004c5bd574753b70ea01f252dabd223491f644596"
     },
     {
-      "path": "robots/legged/go1_description/urdf/go1.urdf",
-      "bytes": 62096,
-      "sha256": "8c4c22e581b549027c1918259627bb5172afdf56ab970814b0c6f62ecf5604ff"
+      "path": "robots/legged/go1_description/urdf/gazebo.xacro",
+      "bytes": 5965,
+      "sha256": "0eb3058bfee69485d166acec3497363fbdd9149dda6893845f5c20d6402a33d8"
     },
     {
-      "path": "robots/legged/go1_description/xacro/const.xacro",
-      "bytes": 7912,
-      "sha256": "ed88ca0e4740a292276e690a081df120756673d1c70d914c801cb209156a8573"
-    },
-    {
-      "path": "robots/legged/go1_description/xacro/depthCamera.xacro",
-      "bytes": 3620,
-      "sha256": "21b482adf78d41f39358543ec1f1cd43263888ee83c231e9361d96129cf5053d"
-    },
-    {
-      "path": "robots/legged/go1_description/xacro/gazebo.xacro",
-      "bytes": 13314,
-      "sha256": "b82bf77321afb82790217b781d6ccd56a0aee4ff05ec7822be00b4e0438b8d58"
-    },
-    {
-      "path": "robots/legged/go1_description/xacro/leg.xacro",
-      "bytes": 12300,
-      "sha256": "97e601bd6bc58e1b2f0bf493adacc31b72de82e7ce4f27581f3ae278538d3b39"
-    },
-    {
-      "path": "robots/legged/go1_description/xacro/materials.xacro",
-      "bytes": 865,
-      "sha256": "fca1bbb3920c91436a854ab4f3edfac96bc85f72263d60f5f62d35b613c61b2f"
-    },
-    {
-      "path": "robots/legged/go1_description/xacro/robot.xacro",
-      "bytes": 688,
-      "sha256": "52383b3f490c798d95c61f59d1a68f6f572f616aa0f3dc8ab411029d13be9510"
-    },
-    {
-      "path": "robots/legged/go1_description/xacro/transmission.xacro",
-      "bytes": 1719,
-      "sha256": "f4a0fc2c5df4414e214d4190a003f9da23c903daad454053447ebced8bc9b223"
-    },
-    {
-      "path": "robots/legged/go1_description/xacro/ultraSound.xacro",
-      "bytes": 1092,
-      "sha256": "52ebec7e2ac5e3985356c016e779603f8b4059d8dc3ea6541964ab11ff171219"
+      "path": "robots/legged/go1_description/urdf/robot.urdf",
+      "bytes": 39669,
+      "sha256": "89eb1b3af88e92299a7cb6158d94f0c51ac29ec48213fc15ebfbea8d0a34c0ea"
     },
     {
       "path": "robots/legged/go2_description/CMakeLists.txt",
-      "bytes": 994,
-      "sha256": "a6efd7118b07aa99fb6225eafca2e692004c57d157e917d51adf0ca3002e48f9"
+      "bytes": 197,
+      "sha256": "6f35a63dff8cc4e19e64d7b5dd6953fc7f24f16ad1818b54ea2c22366a668041"
     },
     {
-      "path": "robots/legged/go2_description/config/robot_control.yaml",
-      "bytes": 1855,
-      "sha256": "ac23055a1512cd0e913720a25b39d02eb3782e7e1623ea69f52dab935e750e81"
-    },
-    {
-      "path": "robots/legged/go2_description/config/robot_control_ros2.yaml",
-      "bytes": 529,
-      "sha256": "7730d1e7cb029c9ea094af6047f2d6b1bfe4c990de5c81e26cf3f10401c1acc5"
-    },
-    {
-      "path": "robots/legged/go2_description/launch/check_joint.rviz",
-      "bytes": 8486,
-      "sha256": "a34b3bb7774bfed9cef7b548c2bcf63a38df81555a797a991dda76f006d74dee"
-    },
-    {
-      "path": "robots/legged/go2_description/launch/gazebo.launch",
-      "bytes": 557,
-      "sha256": "76502fe585d54cf31fe152dfa0172a0dd70a1928a79998783d42b89db0c640b8"
-    },
-    {
-      "path": "robots/legged/go2_description/launch/go2_rviz.launch",
-      "bytes": 807,
-      "sha256": "2ee85e5a812ec3222dae4701eb56368631ef200a22faedd01765f16a76eb4145"
+      "path": "robots/legged/go2_description/config/controllers.yaml",
+      "bytes": 1264,
+      "sha256": "afe47c449424d50bdb3c643eb120cc1c2e935e76a3dcf3f6e5bffd38684a0a33"
     },
     {
       "path": "robots/legged/go2_description/meshes/base.dae",
@@ -958,69 +793,29 @@
       "sha256": "c7bae0b0565c2aa4b7cc15a538d795e9153e0f10c821cc18429e92693172bdc6"
     },
     {
-      "path": "robots/legged/go2_description/package.ros1.xml",
-      "bytes": 640,
-      "sha256": "fc1a4712aa4ce5b298b0f429752e4445e7e91e3e1fd4b582b6d0745309fe4b54"
-    },
-    {
-      "path": "robots/legged/go2_description/package.ros2.xml",
-      "bytes": 618,
-      "sha256": "5b5f4470d4c4e51e3130ac38a3a15974dd41a43b64828c6fbcc7e9d4dce56b7b"
-    },
-    {
       "path": "robots/legged/go2_description/package.xml",
-      "bytes": 640,
-      "sha256": "fc1a4712aa4ce5b298b0f429752e4445e7e91e3e1fd4b582b6d0745309fe4b54"
+      "bytes": 674,
+      "sha256": "94e2b911b64b20f4775af59097f00a3342f17789f91f6176bd51254105f61a39"
     },
     {
-      "path": "robots/legged/go2_description/urdf/go2_description.urdf",
-      "bytes": 26529,
-      "sha256": "c1b620c89f0424bea62aa8308f80ef0b5c1c3f90679eb7b5be093926715d500a"
+      "path": "robots/legged/go2_description/urdf/gazebo.xacro",
+      "bytes": 2645,
+      "sha256": "938948822bcbbf32e49ec23879752c6dc8b218e76a38941b4e5f4f16bd3c9559"
     },
     {
-      "path": "robots/legged/go2_description/xacro/gazebo.xacro",
-      "bytes": 11622,
-      "sha256": "a8d78d7f4f51251c233dcdd909af579e572fe5eb26a412bf326343bcd5ef742b"
-    },
-    {
-      "path": "robots/legged/go2_description/xacro/robot.xacro",
-      "bytes": 517,
-      "sha256": "1c089fcfb5b9349f41b76522d7374004f6238fa701c513046c31e088bfa5ed1a"
+      "path": "robots/legged/go2_description/urdf/robot.urdf",
+      "bytes": 26083,
+      "sha256": "92c9b0e22840048ddd75d1e1e131c484a923598f83d05f0a2396e4aeda64e094"
     },
     {
       "path": "robots/wheel/b2w_description/CMakeLists.txt",
-      "bytes": 994,
-      "sha256": "3f653edad506d85c78f624036f333596d62285253cc2c19ee7f77a30fa84a30a"
+      "bytes": 197,
+      "sha256": "0cc68f29376cbc07cc9758c6b2607c3e61645f09c57037198bae56bc1f78a275"
     },
     {
-      "path": "robots/wheel/b2w_description/README.md",
-      "bytes": 734,
-      "sha256": "66ca1325f0e8c3bf4258d5badfa2d428a986f464c2a51dd9fa5ee0c3114e4eaa"
-    },
-    {
-      "path": "robots/wheel/b2w_description/config/b2w.rviz",
-      "bytes": 7459,
-      "sha256": "512c2ba302b28317a81a34d2777caf0cd0853d362aa4cf8d8e24ed64db3c03e7"
-    },
-    {
-      "path": "robots/wheel/b2w_description/config/robot_control.yaml",
-      "bytes": 2302,
-      "sha256": "3462861124d0649786cc1bc5513ea6173194d4c45243ac1bcc2ab8b75e3b5d7f"
-    },
-    {
-      "path": "robots/wheel/b2w_description/config/robot_control_ros2.yaml",
-      "bytes": 529,
-      "sha256": "7730d1e7cb029c9ea094af6047f2d6b1bfe4c990de5c81e26cf3f10401c1acc5"
-    },
-    {
-      "path": "robots/wheel/b2w_description/launch/display.launch",
-      "bytes": 494,
-      "sha256": "bd6a614cb54cfaf01a298364db941d87c72fa17366e7d4d3380c1e463d2a4564"
-    },
-    {
-      "path": "robots/wheel/b2w_description/launch/gazebo.launch",
-      "bytes": 555,
-      "sha256": "d67749a2d655ebedb1ec786774311061df3e5403e350e9f831306c155537f8fd"
+      "path": "robots/wheel/b2w_description/config/controllers.yaml",
+      "bytes": 1624,
+      "sha256": "b77c1e39c45129b20cd0aa220c9c2d3ca0738a350df6908dc9a961e7fa7f7dda"
     },
     {
       "path": "robots/wheel/b2w_description/meshes/FL_calf.dae",
@@ -1108,69 +903,29 @@
       "sha256": "25e31d1a78f381d95d973f2f4a8bfabc0c56808f345bd5ac33cfff53f579b386"
     },
     {
-      "path": "robots/wheel/b2w_description/package.ros1.xml",
-      "bytes": 641,
-      "sha256": "ce4799e4d5268584b142df846315a636f8b7491c457d35ca5ec9586407b3afdd"
-    },
-    {
-      "path": "robots/wheel/b2w_description/package.ros2.xml",
-      "bytes": 618,
-      "sha256": "f011a9506fd11d7988051988247c697f114daee36e9f61ce654abb9d27df5fba"
-    },
-    {
       "path": "robots/wheel/b2w_description/package.xml",
-      "bytes": 641,
-      "sha256": "ce4799e4d5268584b142df846315a636f8b7491c457d35ca5ec9586407b3afdd"
+      "bytes": 674,
+      "sha256": "88bf8be617a304557a7ab630db23694820677b8ebedcb99cd9ae5c3ea4e64f23"
     },
     {
-      "path": "robots/wheel/b2w_description/urdf/b2w_description.urdf",
-      "bytes": 28790,
-      "sha256": "68d3fbee0f3495f81cb67f687d22f3f08a16d5c8a27cf7baf2625a351d62be48"
+      "path": "robots/wheel/b2w_description/urdf/gazebo.xacro",
+      "bytes": 2481,
+      "sha256": "0c3b5a845ffe450c0e3f81b7c59c07ec7abe22b7dde63ee2775cf55215c2612a"
     },
     {
-      "path": "robots/wheel/b2w_description/urdf/b2w_test.urdf",
-      "bytes": 21277,
-      "sha256": "a7913cc6d586cc6671e3b3d1e367a92f59b1258b5a2ac8d12cf67df9669dfa80"
-    },
-    {
-      "path": "robots/wheel/b2w_description/xacro/gazebo.xacro",
-      "bytes": 12559,
-      "sha256": "27cb44916d6980586c03469aff306b6b66a3c9771fd0734faf1caa9e38611b63"
-    },
-    {
-      "path": "robots/wheel/b2w_description/xacro/robot.xacro",
-      "bytes": 266,
-      "sha256": "b73538c40a0fde65d411d8d03885c007410385487ddd55d7c095b3ed47b77ed7"
+      "path": "robots/wheel/b2w_description/urdf/robot.urdf",
+      "bytes": 28413,
+      "sha256": "691960d609fcd1708a1b778ffa97debfc83ba19f5e388515d2aef4ae33bec948"
     },
     {
       "path": "robots/wheel/go2w_description/CMakeLists.txt",
-      "bytes": 994,
-      "sha256": "91c0a15fb105c5311de8898b487103e83db618ac51825865fbd2892506ff372b"
+      "bytes": 198,
+      "sha256": "59343a2925ac461c8ec0331f0bb843bcd574f8394c5863623c267e16ce93b59d"
     },
     {
-      "path": "robots/wheel/go2w_description/config/robot_control.yaml",
-      "bytes": 2303,
-      "sha256": "3fa563aa005fb3a708e751f45fda0a3d806e41864444efc1f6b2a7f656673498"
-    },
-    {
-      "path": "robots/wheel/go2w_description/config/robot_control_ros2.yaml",
-      "bytes": 530,
-      "sha256": "1db0b05ae3640b85c01ec86785937fa0e5991cc910ae1889337d080184872134"
-    },
-    {
-      "path": "robots/wheel/go2w_description/launch/check_joint.rviz",
-      "bytes": 7200,
-      "sha256": "8c7683b7629d09c6f11a72f74478a4fcf79c90f490fdcb37ca3a7e4ae8bf53f9"
-    },
-    {
-      "path": "robots/wheel/go2w_description/launch/gazebo.launch",
-      "bytes": 558,
-      "sha256": "6a499aca04ae50f31cc538d8c8523a4b8ec3e14c6aa66fa9d06a5dd0b185f2b7"
-    },
-    {
-      "path": "robots/wheel/go2w_description/launch/go2w_rviz.launch",
-      "bytes": 807,
-      "sha256": "cfe13ba9cd51ba7eb78c933c5c45fdd0cbd479b61ce0c6fa2bcfdf3d6aa964b2"
+      "path": "robots/wheel/go2w_description/config/controllers.yaml",
+      "bytes": 1625,
+      "sha256": "2a91e64b18129eaa9e1e251fe0dc3040eb36eb8d413fa0ec2ff463dc35aa04fe"
     },
     {
       "path": "robots/wheel/go2w_description/meshes/base.dae",
@@ -1186,11 +941,6 @@
       "path": "robots/wheel/go2w_description/meshes/calf_mirror.stl",
       "bytes": 1652384,
       "sha256": "528b471bfc60b6e72dbb162b34eefebced994bea82aaf58eda91f090219cd911"
-    },
-    {
-      "path": "robots/wheel/go2w_description/meshes/foot.dae",
-      "bytes": 506988,
-      "sha256": "ffbd95fd641866ce9bd277aa249b92dafc9148d70131fa2c52709a35ce5b710b"
     },
     {
       "path": "robots/wheel/go2w_description/meshes/hip.dae",
@@ -1218,64 +968,29 @@
       "sha256": "c7bae0b0565c2aa4b7cc15a538d795e9153e0f10c821cc18429e92693172bdc6"
     },
     {
-      "path": "robots/wheel/go2w_description/package.ros1.xml",
-      "bytes": 644,
-      "sha256": "e582fb1c3037bfee25f7c2e157069e395e04b47df12d9768a276ab2fc943b212"
-    },
-    {
-      "path": "robots/wheel/go2w_description/package.ros2.xml",
-      "bytes": 620,
-      "sha256": "503f8996077dcd6b660bb6fae7737e208f04991c0697976fbd8ca5676539a740"
-    },
-    {
       "path": "robots/wheel/go2w_description/package.xml",
-      "bytes": 644,
-      "sha256": "e582fb1c3037bfee25f7c2e157069e395e04b47df12d9768a276ab2fc943b212"
+      "bytes": 675,
+      "sha256": "52ac63e92fba5c4f523131c28deb64ede0bf60678a7b5e6763afb69f662bb9e7"
     },
     {
-      "path": "robots/wheel/go2w_description/urdf/go2w_description.urdf",
-      "bytes": 31791,
-      "sha256": "357cb88bef3bcb1f1f43c2083eddf04000855b746a9a5af96efcb98be239db40"
+      "path": "robots/wheel/go2w_description/urdf/gazebo.xacro",
+      "bytes": 2484,
+      "sha256": "b97668d37bd7cdb86cc7f76b250beb564df5694f1aa1b5f89417d2e44268bfe6"
     },
     {
-      "path": "robots/wheel/go2w_description/xacro/gazebo.xacro",
-      "bytes": 12561,
-      "sha256": "d633dfe139c0dc3a9a2030c12e2795d5eed80808d85060d44a690ef59e877b93"
-    },
-    {
-      "path": "robots/wheel/go2w_description/xacro/robot.xacro",
-      "bytes": 270,
-      "sha256": "1f7580bc1a14f5a9dea481a4379864a2f7e92d654dfcd279d3eb3a5ea8293ffd"
+      "path": "robots/wheel/go2w_description/urdf/robot.urdf",
+      "bytes": 32270,
+      "sha256": "93eeb1d51b5053f15debc06075c5cd287d6c5f622bc4bc557e074594ac249152"
     },
     {
       "path": "robots/wheel/m20_description/CMakeLists.txt",
-      "bytes": 605,
-      "sha256": "b9a57ef5ce076bdb854439948ad6ee39f0a282e6d1c5fc9cdd7680fd935435b8"
+      "bytes": 197,
+      "sha256": "9574e5ae6c85267fcb6b4c2dd6f4a078f3012de19f1a7ce1ecdf6c1f4a4e62ec"
     },
     {
-      "path": "robots/wheel/m20_description/config/robot_control.yaml",
-      "bytes": 2310,
-      "sha256": "be0db8eeb20155034473b52f0560c7e92559c561775c9cc606b1d32b4b4056b5"
-    },
-    {
-      "path": "robots/wheel/m20_description/config/robot_control_ros2.yaml",
-      "bytes": 529,
-      "sha256": "7730d1e7cb029c9ea094af6047f2d6b1bfe4c990de5c81e26cf3f10401c1acc5"
-    },
-    {
-      "path": "robots/wheel/m20_description/launch/check_joint.rviz",
-      "bytes": 7342,
-      "sha256": "8c8b320a079defc7f3094bfeb350fefe41bb24b3b7f6bde17c968cc0cef8eee9"
-    },
-    {
-      "path": "robots/wheel/m20_description/launch/gazebo.launch",
-      "bytes": 554,
-      "sha256": "9f8701163da584cdc458e76e0350122fba787c25a5587ea8437e2311ff579e01"
-    },
-    {
-      "path": "robots/wheel/m20_description/launch/m20_rviz.launch",
-      "bytes": 853,
-      "sha256": "d919fdd98507f7350e0e9ded79fc1ef123d95661b09fd302910e4920926140f1"
+      "path": "robots/wheel/m20_description/config/controllers.yaml",
+      "bytes": 1632,
+      "sha256": "4f39fb253c29b9751938737a87166bd465d35861c75694aad2a1407f3ef90347"
     },
     {
       "path": "robots/wheel/m20_description/meshes/base_link.STL",
@@ -1363,39 +1078,19 @@
       "sha256": "88b2fca83119f36b156520ae4c7a4334baa6a2ad71da90e1a529e10114a16641"
     },
     {
-      "path": "robots/wheel/m20_description/package.ros1.xml",
-      "bytes": 554,
-      "sha256": "3a809ebd05c27124d6c9e22fd8874f4f02286e7f94c9fa1e2eec384317247895"
-    },
-    {
-      "path": "robots/wheel/m20_description/package.ros2.xml",
-      "bytes": 618,
-      "sha256": "51057fffbcb7e92d8b61c0f9b6e585f852dc1d36282e408a1e8b5f3162c92ce6"
-    },
-    {
       "path": "robots/wheel/m20_description/package.xml",
-      "bytes": 554,
-      "sha256": "3a809ebd05c27124d6c9e22fd8874f4f02286e7f94c9fa1e2eec384317247895"
+      "bytes": 674,
+      "sha256": "464df8e2ec19dc9dd131dbc955caa709f31d0e6514e529631657175fc352d99b"
     },
     {
-      "path": "robots/wheel/m20_description/urdf/M20.urdf",
-      "bytes": 21952,
-      "sha256": "8202cee50ea319c4c238d0402d9291fa56138ca8e2ba795a3747738bd194d094"
+      "path": "robots/wheel/m20_description/urdf/gazebo.xacro",
+      "bytes": 2446,
+      "sha256": "85d23cb7ef0f53d631f46a620e08f07cd57a38ed36a8e3431e3a40d1e832baf2"
     },
     {
-      "path": "robots/wheel/m20_description/urdf/m20_description.urdf",
-      "bytes": 29887,
-      "sha256": "f039573e7bd6e3d3c962977872749b0718f7c6795936115793b64e673fd0feae"
-    },
-    {
-      "path": "robots/wheel/m20_description/xacro/gazebo.xacro",
-      "bytes": 11730,
-      "sha256": "7779165002d8bfa393b7b392bd560ba44f8608a51bb64a62f18de366c1df9234"
-    },
-    {
-      "path": "robots/wheel/m20_description/xacro/robot.xacro",
-      "bytes": 254,
-      "sha256": "e1318771f75c1bdf6d0a246a92805f029ebdd67c9d68c4ea872d7eba82e37977"
+      "path": "robots/wheel/m20_description/urdf/robot.urdf",
+      "bytes": 26311,
+      "sha256": "f55ad030a23476f83a7f024490cd211f09bceb0ca097cc0685128b6f6ad5473a"
     },
     {
       "path": "third/onnxruntime-linux-x64-1.20.1/GIT_COMMIT_ID",
@@ -1644,8 +1339,8 @@
     },
     {
       "path": "tools/docs/github-publishing.md",
-      "bytes": 3272,
-      "sha256": "888fc1335b8cd89b8673acfaaff2f5b932f4e20b87efc8f49d0fad42838bf184"
+      "bytes": 3431,
+      "sha256": "9f42805fbe75649d1fd2ce1c0317d7adf790f8307220319e835f010a20aaddea"
     },
     {
       "path": "tools/docs/media/architecture.svg",
@@ -1669,18 +1364,23 @@
     },
     {
       "path": "tools/docs/public/architecture.md",
-      "bytes": 1977,
-      "sha256": "9fdaeb31506b2abcd59b44fd5eb70623a35094c84858b6327d927867241b9ff6"
+      "bytes": 2108,
+      "sha256": "05484401dd2067807fa1ad138a68c4918e0f0133c67cba9be93223ba5e116a43"
     },
     {
       "path": "tools/docs/public/configuration.md",
-      "bytes": 2306,
-      "sha256": "2b410e5e1f3fc58f07b3b9b32d8f755708879545e6517b2ed76b42dbdf85d441"
+      "bytes": 2725,
+      "sha256": "d3f03c80e6c0d3771e6b59d95bee242af2535859617895d8025eeded598f6ebe"
     },
     {
       "path": "tools/export_public.py",
-      "bytes": 12823,
-      "sha256": "f863148ad59576487af917972d4dcb6b2a7c6be723907081692296565b0e80cb"
+      "bytes": 13129,
+      "sha256": "cf7469e23dd72c176378fde6eb790f8bbf6b13cfed3721b0019a9dc28c605d3e"
+    },
+    {
+      "path": "tools/model_probe/CMakeLists.txt",
+      "bytes": 930,
+      "sha256": "aac31dc0aabf9441590253b2ab591592af4f601bec5c3a48154f7732b647930b"
     },
     {
       "path": "tools/model_probe/main.cpp",
@@ -1694,8 +1394,8 @@
     },
     {
       "path": "tools/release/public.gitignore",
-      "bytes": 284,
-      "sha256": "ff671f89d180807f4f16b129b8fceaf63ff10e36369487cee100228fc578e2a2"
+      "bytes": 338,
+      "sha256": "f4aed775161574ceecb8058979207bc9bb8e3630b523a6c1df9eb84a7b5abf8e"
     },
     {
       "path": "tools/requirements.txt",
@@ -1704,43 +1404,23 @@
     },
     {
       "path": "tools/rlsim.py",
-      "bytes": 11993,
-      "sha256": "51c6b20fbb5b2815a78d395f28252b4de43069d3a7f2c65d39d96b87d3d697c6"
+      "bytes": 8207,
+      "sha256": "90593fd6fca17110c1d17dd940183736ba0b41d832fe4f096d5df4299811b701"
     },
     {
       "path": "tools/rlsim_support/__init__.py",
-      "bytes": 79,
-      "sha256": "b03e478633f9372402455cfe138a59d076fc2a01ab159d88f388a59e6857fea5"
-    },
-    {
-      "path": "tools/rlsim_support/baseline.py",
-      "bytes": 7199,
-      "sha256": "136da6fbeb2b00815ce5badab7525daee53340bd188cda9f526454a87ca882f8"
+      "bytes": 78,
+      "sha256": "1e6150de4db1494a8d4ee38f2eb3cb6467f1bbe06a63dbd1df2452f9a3417f3c"
     },
     {
       "path": "tools/rlsim_support/catalog.py",
-      "bytes": 13110,
-      "sha256": "2c5e2421f3871649275e957f14baf458171a231d2e698d9d7687819c0a515159"
+      "bytes": 13114,
+      "sha256": "afe75d64cd4038c732e3deea1334a84f53d46fc1d1451071d4c3d6aab98e3966"
     },
     {
       "path": "tools/rlsim_support/experiment.py",
-      "bytes": 26843,
-      "sha256": "2fbad66f58c29730f4344c00aec718b46c6b375c4008fc115f634be64efc91c4"
-    },
-    {
-      "path": "tools/rlsim_support/export.py",
-      "bytes": 4005,
-      "sha256": "ba1cddc7de1572dcae52f5135f7c27165573ba56d86a1c957e797ec9cc413832"
-    },
-    {
-      "path": "tools/rlsim_support/legacy.py",
-      "bytes": 19013,
-      "sha256": "c1adf03debb4324c70e43ce175a12741aeb36f97d65c660485d18cb0509dfebf"
-    },
-    {
-      "path": "tools/rlsim_support/migration.py",
-      "bytes": 2314,
-      "sha256": "c001c5cd2bef51bcd9cc0672e8f6f7cc628eac3d2b694cc62c9971e9f4318101"
+      "bytes": 26644,
+      "sha256": "fef6e79883627464885186881c9d9e644cf4220f91c3c5f3549812ea44966516"
     },
     {
       "path": "tools/rlsim_support/policy_assets.py",
@@ -1749,18 +1429,18 @@
     },
     {
       "path": "tools/rlsim_support/references.py",
-      "bytes": 2306,
-      "sha256": "0f7cb5d0a61d8c21b646adcaa312c4fb5e8976ee45a1db50696bd3645cbb6447"
-    },
-    {
-      "path": "tools/rlsim_support/relocation.py",
-      "bytes": 4436,
-      "sha256": "7038c8ce6e60433e85c30231d438e909881b7074317bf2be24db82a941382697"
+      "bytes": 2310,
+      "sha256": "a2c03bc2f0604c1db0f3fca0904448cac2a8ec5841739ac47aa3063b7664f3d2"
     },
     {
       "path": "tools/rlsim_support/retention.py",
       "bytes": 3524,
       "sha256": "8d43b9540949030569921001499ca065581866f7747b3876e8df51390c98e252"
+    },
+    {
+      "path": "tools/rlsim_support/robot_assets.py",
+      "bytes": 7625,
+      "sha256": "260ec4554df7dd3d4123d8c96f9214ae18482f1622e7f08c957e1d86fa0e41a2"
     },
     {
       "path": "tools/rlsim_support/runtime.py",
@@ -1769,8 +1449,8 @@
     },
     {
       "path": "tools/rlsim_support/session.py",
-      "bytes": 7597,
-      "sha256": "a853906ed5868a14974af756f85d2078cc1ba2be991f3e775f273b1faeb93964"
+      "bytes": 7601,
+      "sha256": "05594e4d57cb31e996c7845b54fad44ad3140af5049ab655b0efa50db1f7aaa6"
     },
     {
       "path": "tools/rlsim_support/task.py",
@@ -1779,8 +1459,13 @@
     },
     {
       "path": "tools/rlsim_support/terrain.py",
-      "bytes": 6893,
-      "sha256": "ad0bae57ec3f0549ddb5cf0a5ffc10013263e5cc904c1c36106b15bbea7d7692"
+      "bytes": 6897,
+      "sha256": "1eb5e1eaec0a9b0a5b3188140cc71f38b1c345f16dd5df2472abc6c682b56204"
+    },
+    {
+      "path": "tools/rlsim_support/validation.py",
+      "bytes": 2042,
+      "sha256": "79f03801302051892a246fc3622948dd1e9e6dd38a86d25ec23d9c5cc81052d6"
     },
     {
       "path": "tools/rlsim_support/yaml_format.py",
@@ -1789,8 +1474,8 @@
     },
     {
       "path": "tools/setup_ros1_workspace.py",
-      "bytes": 2041,
-      "sha256": "06727fe6bdf1ae4834a222abf29e6e14547439f986e3d1e8b385b966300b317e"
+      "bytes": 1386,
+      "sha256": "cac283782d8db40945cc9df48d78d4b6db22ed97f35e8f237dc419c0b291b4af"
     },
     {
       "path": "tools/start_web.sh",
@@ -1809,8 +1494,13 @@
     },
     {
       "path": "tools/tests/test_public_export.py",
-      "bytes": 6598,
-      "sha256": "a7ccd134e532afee00a326c51aefc4df9c19465ded6f42e9a7ed4c17d36efa2f"
+      "bytes": 7095,
+      "sha256": "d354f1281691aad7b885598a7fed37d69c99f67e7f47d3aa4beada55086cc63d"
+    },
+    {
+      "path": "tools/tests/test_robot_assets.py",
+      "bytes": 2950,
+      "sha256": "264aa235ca5f822f5a41a393642bd521331d854e85a4efc2a1716187641785c3"
     },
     {
       "path": "tools/web/__init__.py",

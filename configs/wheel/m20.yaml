@@ -7,9 +7,9 @@ robot:
   variant: default
   package: m20_description
   package_path: robots/wheel/m20_description
-  urdf: robots/wheel/m20_description/urdf/m20_description.urdf
-  xacro: robots/wheel/m20_description/xacro/robot.xacro
-  controllers: robots/wheel/m20_description/config/robot_control.yaml
+  urdf: robots/wheel/m20_description/urdf/robot.urdf
+  xacro: robots/wheel/m20_description/urdf/gazebo.xacro
+  controllers: robots/wheel/m20_description/config/controllers.yaml
   namespace: /m20_gazebo/
   model_name: m20_gazebo
   joints: [fl_hipx_joint, fl_hipy_joint, fl_knee_joint, fl_wheel_joint, fr_hipx_joint, fr_hipy_joint, fr_knee_joint, fr_wheel_joint, hl_hipx_joint,

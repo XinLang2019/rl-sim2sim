@@ -21,4 +21,4 @@ target_link_libraries(rlsim_web_camera_pose PRIVATE ${GAZEBO_LIBRARIES} ${catkin
 add_dependencies(rlsim_web_camera_pose ${catkin_EXPORTED_TARGETS})
 install(TARGETS rlsim_gazebo_node RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 install(TARGETS rlsim_web_camera_pose LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION})
-install(DIRECTORY ../worlds robots models DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+install(DIRECTORY ../worlds models DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})

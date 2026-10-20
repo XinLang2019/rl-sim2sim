@@ -10,25 +10,13 @@ def setup(root, workspace):
     sources.mkdir(parents=True, exist_ok=True)
     targets = {name: root / "rlsim/interfaces/gazebo" / name for name in ("robot_msgs", "robot_controller", "rlsim_gazebo")}
     targets["realsense_ros_gazebo"] = root / "third/realsense_ros_gazebo"
-    # Migrate only source links created by the preceding layout. User checkouts
-    # and links to any other location are never replaced.
-    retired = {name: root / "rlsim/ros1" / name for name in ("robot_msgs", "robot_joint_controller", "rl_sar")}
-    owned = []
-    for name, target in retired.items():
-        path = sources / name
-        if path.is_symlink() and path.resolve() == target:
-            owned.append(path)
-        elif (path.exists() or path.is_symlink()) and name not in targets:
-            raise ValueError("Workspace entry already points elsewhere: " + str(path))
     # Preflight everything before writing. Never replace someone else's checkout.
     for name, target in targets.items():
         path = sources / name
         if not (target / "package.xml").is_file():
             raise ValueError("Missing ROS1 package: " + str(target))
-        if (path.exists() or path.is_symlink()) and path.resolve() != target and path not in owned:
+        if (path.exists() or path.is_symlink()) and path.resolve() != target:
             raise ValueError("Workspace entry already points elsewhere: " + str(path))
-    for path in owned:
-        path.unlink()
     for name, target in targets.items():
         path = sources / name
         if not path.is_symlink():

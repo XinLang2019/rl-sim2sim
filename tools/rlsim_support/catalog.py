@@ -5,7 +5,7 @@ from pathlib import Path
 
 import yaml
 
-from .legacy import ConfigError, UniqueLoader
+from .validation import ConfigError, UniqueLoader
 from .references import resolve_values
 
 FIELDS = {

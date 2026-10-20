@@ -17,10 +17,11 @@ import yaml
 
 from .catalog import Catalog, ConfigError, identifier, keys, load_resource, load_yaml, path_in, validate_resource, merge
 from .yaml_format import dumps
-from .legacy import integer, number, sha256, vector
+from .validation import integer, number, sha256, vector
 from .references import resolve_values
 from .terrain import geometry, sdf_world, load_world
 from .retention import output_guard, prune_task_outputs
+from .robot_assets import mesh_dependencies
 
 
 def ros_environment(root, robot):
@@ -194,12 +195,7 @@ def resolve(root, experiment, terrain_id=None, terrain_parameters=None, policy_r
     sources.update(p.resolve() for p in (root / "tools/web/services").glob("*.py"))
     package = path_in(root, robot["package_path"])
     sources.update(p.resolve() for p in package.rglob("*") if p.is_file() and "__pycache__" not in p.parts)
-    for mesh in urdf.findall(".//mesh"):
-        uri = mesh.get("filename", "")
-        prefix = "package://" + robot["package"] + "/"
-        if not uri.startswith(prefix):
-            raise ConfigError("Unsupported mesh URI: " + uri)
-        sources.add(path_in(root, package / uri[len(prefix):]))
+    sources.update(mesh_dependencies(package, urdf))
     xacro = path_in(root, robot["xacro"])
     controller_file = path_in(root, robot["controllers"])
     controller_root = load_yaml(controller_file)

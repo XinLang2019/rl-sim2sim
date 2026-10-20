@@ -62,6 +62,15 @@ class PublicExportTests(unittest.TestCase):
         with self.assertRaisesRegex(module.PublicationError, 'duplicates'):
             self.exporter().export(self.output)
 
+    def test_private_fingerprints_survive_archive_cleanup(self):
+        data = b'\x00\xffprotected-archived-weights'
+        self.data['protected_sha256'] = [module.digest(data)]
+        # The archive no longer exists, but a renamed copy must remain private.
+        (self.root / 'code/models').mkdir()
+        (self.root / 'code/models/ordinary.onnx').write_bytes(data)
+        with self.assertRaisesRegex(module.PublicationError, 'duplicates'):
+            self.exporter().export(self.output)
+
     def test_unreviewed_binary_and_changed_image_blocked(self):
         image = self.root / 'code/preview.png'
         image.write_bytes(b'\xff\x00image')

@@ -12,7 +12,7 @@ import tempfile
 
 from .catalog import ConfigError
 from .experiment import ros_environment
-from .legacy import sha256
+from .validation import sha256
 from .runtime import quiet_ros_environment
 from .retention import output_guard, output_lease
 

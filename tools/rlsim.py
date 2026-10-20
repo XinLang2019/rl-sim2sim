@@ -6,9 +6,7 @@ import sys
 from pathlib import Path
 
 try:
-    from rlsim_support.baseline import capture, verify, write_json
-    from rlsim_support.legacy import ConfigError, POLICY_TYPES, RUNNERS, audit, inventory
-    from rlsim_support.export import export_policy
+    from rlsim_support.validation import ConfigError
 except ModuleNotFoundError as error:
     if error.name != "yaml":
         raise
@@ -19,40 +17,16 @@ def parser():
     result = argparse.ArgumentParser(description=__doc__)
     result.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1], help="Repository root; independent of current working directory")
     commands = result.add_subparsers(dest="command", required=True)
-    migration = commands.add_parser("migration", help="Verify relocated resource bytes and catalog coverage")
-    migration.add_argument("action", choices=("verify",))
-    migration.add_argument("--json", action="store_true")
     serving = commands.add_parser("serve", help="Serve the local web workbench on 127.0.0.1")
     serving.add_argument("--port", type=int, default=8765)
     serving.add_argument("--policy-run", type=Path, required=True)
     serving.add_argument("--ros-python", type=Path, default=Path("/usr/bin/python3"))
     serving.add_argument("--xacro", help="Explicit xacro executable")
-    listing = commands.add_parser("inventory", help="Audit archived legacy config.yaml profiles; use assets for the current catalog")
-    listing.add_argument("--runner", choices=RUNNERS, default="rl_wheel")
-    listing.add_argument("--probe", type=Path, help="Path to compiled rlsim_model_probe")
-    listing.add_argument("--json", action="store_true")
-    for name in ("check", "capture", "export"):
-        help_text = {"check": "Inspect a profile", "capture": "Capture immutable contract, file hashes and model fixtures",
-                     "export": "Export a validated legacy TS profile to a v1 core policy manifest"}
-        command = commands.add_parser(name, help=help_text[name])
-        command.add_argument("profile", help="ROBOT/PROFILE, e.g. go2w/legged_gym")
-        command.add_argument("--runner", choices=RUNNERS, default="rl_wheel")
-        command.add_argument("--policy-type", choices=POLICY_TYPES, help="Inspection override; never edits YAML or fixes runtime load errors")
-        command.add_argument("--probe", type=Path, required=name in ("capture", "export"))
-        if name in ("capture", "export"):
-            command.add_argument("--output", type=Path, required=True)
-        else:
-            command.add_argument("--json", action="store_true")
-    checking = commands.add_parser("verify", help="Verify captured files, contract and synthetic model I/O")
-    checking.add_argument("baseline", type=Path)
-    checking.add_argument("--probe", type=Path, required=True)
-    checking.add_argument("--allow-source-drift", action="store_true", help="Allow changes to captured runtime source files; resources and configuration remain strict")
-    checking.add_argument("--rtol", type=float, default=1e-5)
-    checking.add_argument("--atol", type=float, default=1e-6)
-    checking.add_argument("--json", action="store_true")
     assets = commands.add_parser("assets", help="List registered robot, policy, terrain and backend assets")
     assets.add_argument("--kind", choices=("robot", "policy", "terrain", "backend", "control", "experiment"))
     assets.add_argument("--json", action="store_true")
+    assets.add_argument("--check", action="store_true", help="Validate canonical robot geometry, meshes, controllers and Gazebo expansion")
+    assets.add_argument("--xacro", help="Explicit xacro executable for asset validation")
     experiments = commands.add_parser("experiment", help="Resolve, prepare and manage an experiment")
     actions = experiments.add_subparsers(dest="action", required=True)
     for name in ("check", "prepare", "run"):
@@ -72,21 +46,6 @@ def parser():
         if name == "command":
             action.add_argument("control", choices=("stand", "policy", "sit", "passive", "reset", "toggle"))
     return result
-
-
-def show(report):
-    reports = report.get("reports", [report])
-    for item in reports:
-        print("{} {} [{}]".format("PASS" if item["ok"] else "FAIL", item["profile"], item.get("runner", "baseline")))
-        contract = item.get("contract")
-        if contract:
-            obs = contract["observation"]
-            print("  {} | {} DOFs | obs {} -> {} | {}".format(
-                contract["policy_type"], contract["robot"]["dofs"], obs["width"], obs["model_input_width"], contract["model"]))
-        for diagnostic in item["diagnostics"]:
-            print("  {} {}: {}".format(diagnostic["level"].upper(), diagnostic["code"], diagnostic["message"]))
-    if "summary" in report:
-        print("Profiles: {profiles}; passed: {passed}; failed: {failed}".format(**report["summary"]))
 
 
 def experiment_command(args):
@@ -160,12 +119,18 @@ def main(argv=None):
                 server.server_close()
                 manager.close()
             return 0
-        if args.command == "migration":
-            from rlsim_support.migration import verify_resources
-            report = verify_resources(args.root)
-            print(json.dumps(report, ensure_ascii=False, indent=2) if args.json else str(report))
-            return 0 if report["ok"] else 1
         if args.command == "assets":
+            if args.check:
+                if args.kind not in (None, "robot"):
+                    raise ConfigError("assets --check validates robot packages; use --kind robot or omit --kind")
+                from rlsim_support.robot_assets import check_packages
+                report = check_packages(args.root, xacro=args.xacro)
+                if args.json:
+                    print(json.dumps(report, ensure_ascii=False, indent=2))
+                else:
+                    for item in report["packages"]:
+                        print(("PASS " if item["ok"] else "FAIL ") + item["package"] + (": " + item["error"] if not item["ok"] else ""))
+                return 0 if report["ok"] else 1
             from rlsim_support.catalog import Catalog
             items = Catalog(args.root).list()
             items = [item for item in items if not args.kind or item["kind"] == args.kind]
@@ -177,34 +142,7 @@ def main(argv=None):
             return 0
         if args.command == "experiment":
             return experiment_command(args)
-        if args.command == "inventory":
-            report = inventory(args.root, args.runner, args.probe)
-            success = report["summary"]["failed"] == 0
-        elif args.command == "check":
-            report = audit(args.root, args.profile, args.runner, args.policy_type, args.probe)
-            success = report["ok"]
-        elif args.command == "capture":
-            report = capture(args.root, args.profile, args.runner, args.policy_type, args.probe)
-            write_json(args.output, report)
-            print("Captured " + str(args.output))
-            return 0
-        elif args.command == "export":
-            from rlsim_support.yaml_format import dumps
-            config = export_policy(args.root, args.profile, args.runner, args.policy_type, args.probe)
-            args.output.parent.mkdir(parents=True, exist_ok=True)
-            with args.output.open("x", encoding="utf-8") as stream:
-                stream.write(dumps(config))
-            print("Exported " + str(args.output))
-            return 0
-        else:
-            baseline = json.loads(args.baseline.read_text(encoding="utf-8"))
-            report = verify(args.root, baseline, args.probe, args.allow_source_drift, args.rtol, args.atol)
-            success = report["ok"]
-        if args.json:
-            print(json.dumps(report, ensure_ascii=False, indent=2, allow_nan=False))
-        else:
-            show(report)
-        return 0 if success else 1
+        raise ConfigError("Unsupported command")
     except (ConfigError, OSError, ValueError, KeyError, TypeError) as error:
         print("rlsim: " + str(error), file=sys.stderr)
         return 2

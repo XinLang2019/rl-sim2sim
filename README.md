@@ -80,6 +80,8 @@ RL_sim2sim/
 
 浏览器使用原生 HTML / CSS / JavaScript / Canvas，服务端使用 Python HTTP 服务与 ROS 桥接进程；不需要 Node.js、npm 或前端开发服务器。控制、遥测、图像和录制分别管理，切页共用同一个运行会话。
 
+源码只保留当前仿真链路：`third/` 包含 ONNX Runtime 与 Gazebo 相机插件，CLI 提供 `serve`、`assets`、`experiment`。旧架构、迁移基线与实机 SDK 不属于当前部署内容。`tools/tests/` 保留有效回归源码；缓存、测试截图和构建日志不纳入项目资源。公开发布副本放在开发项目之外。
+
 <a id="requirements"></a>
 ## 环境与依赖
 
@@ -303,14 +305,17 @@ videos/simulation-*.mp4           # 主动录制的视频，独立于任务清�
 ```text
 robots/wheel/my_robot_description/      # 有轮关节
 # 或 robots/legged/my_robot_description/ # 纯点足
-├── package.xml                        # ROS 资源包信息
-├── urdf/my_robot.urdf                  # 展开后的关节/限位检查依据
-├── xacro/robot.xacro                   # Gazebo 加载入口
-├── meshes/
-└── config/robot_control.yaml
+├── package.xml                        # ROS 资源包信息与来源
+├── CMakeLists.txt                     # 资源安装规则
+├── urdf/                              # .urdf、.xacro 描述文件
+│   ├── robot.urdf                     # 几何、惯量、关节、碰撞与 transmission
+│   └── gazebo.xacro                   # 通用插件与本机接触参数
+├── config/
+│   └── controllers.yaml              # 控制器与关节的紧凑映射
+└── meshes/                            # 实际使用的网格与纹理
 ```
 
-核对关节、质量、惯量、碰撞体、限位与 mesh 路径。xacro 需要正确的 `gazebo_ros_control` 插件和命名空间，受控关节需要 effort transmission；传感器话题要与适配器匹配。参考 [A1 xacro](robots/legged/a1_description/xacro/robot.xacro)和 [Go2W xacro](robots/wheel/go2w_description/xacro/robot.xacro)。
+核对关节、质量、惯量、碰撞体、限位与 mesh 路径。`gazebo.xacro` 引用后端的通用仿真宏，填写命名空间与实际根连杆；受控关节需要 effort transmission。保留 `_description` 包名供 ROS 资源定位，包内不再维护独立 launch、RViz 或 ROS2 配置。参考 [A1 xacro](robots/legged/a1_description/urdf/gazebo.xacro)和 [Go2W xacro](robots/wheel/go2w_description/urdf/gazebo.xacro)。
 
 ### 2. 创建唯一的机器人配置
 
@@ -338,9 +343,9 @@ robot:
   robot_name: my_robot
   package: my_robot_description
   package_path: robots/legged/my_robot_description
-  urdf: robots/legged/my_robot_description/urdf/my_robot.urdf
-  xacro: robots/legged/my_robot_description/xacro/robot.xacro
-  controllers: robots/legged/my_robot_description/config/robot_control.yaml
+  urdf: robots/legged/my_robot_description/urdf/robot.urdf
+  xacro: robots/legged/my_robot_description/urdf/gazebo.xacro
+  controllers: robots/legged/my_robot_description/config/controllers.yaml
   model_name: my_robot_gazebo
   namespace: /my_robot_gazebo/
   # joints / groups / variant / excluded_plugins 按完整模板填写
@@ -365,7 +370,7 @@ policies: {}
 
 按下一节填写契约。尚不具备部署条件时保留 `unconfigured` 与具体原因。新增资源后刷新网页目录；新机器人未出现在列表时重启网页服务重新读取。新增/修改 C++、消息或插件时重新执行 `./build.sh ros1`。
 
-先检查目录和实际模型，再从网页生成任务，完成站立、小速度测试和 CSV 观察。模型接口检查成功不等于机器人动力学已验证。
+先执行 `/usr/bin/python3 tools/rlsim.py assets --check --xacro /opt/ros/noetic/bin/xacro`，验证几何树、网格、纹理、控制器和 Gazebo 引用。资产布局与接入方法见 [robots/README](robots/README.md)。随后检查实际模型，再从网页生成任务，完成站立、小速度测试和 CSV 观察。资产和模型接口检查成功不等于机器人动力学已验证。
 
 <a id="new-policy"></a>
 ## 添加一个新策略部署

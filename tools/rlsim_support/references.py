@@ -5,7 +5,7 @@ are resolved before schema validation; prepared snapshots contain plain values.
 """
 from pathlib import Path
 
-from .legacy import ConfigError, UniqueLoader
+from .validation import ConfigError, UniqueLoader
 import yaml
 
 

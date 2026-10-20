@@ -62,7 +62,10 @@ class Exporter:
         self.private_hashes = self._fingerprints()
 
     def _fingerprints(self):
-        result = set()
+        # Keep protected fingerprints after obsolete archives are removed.
+        result = set(self.policy.get("protected_sha256", []))
+        if any(not isinstance(value, str) or not re.fullmatch(r"[0-9a-f]{64}", value) for value in result):
+            raise PublicationError("protected_sha256 must contain SHA-256 digests")
         for pattern in self.policy["private_roots"]:
             for path in self.root.glob(pattern):
                 for item in path.rglob("*") if path.is_dir() else (path,):

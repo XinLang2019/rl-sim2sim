@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<robot name="go1" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find go1_description)/urdf/robot.urdf" />
+  <xacro:include filename="$(find rlsim_gazebo)/models/robot_simulation.xacro" />
+  <xacro:rlsim_simulation namespace="/go1_gazebo" base_link="base" />
+  <gazebo reference="imu_link"><gravity>true</gravity></gazebo>
+  <gazebo reference="FR_foot"><visual></visual></gazebo>
+  <gazebo reference="FL_foot"><visual></visual></gazebo>
+  <gazebo reference="RR_foot"><visual></visual></gazebo>
+  <gazebo reference="RL_foot"><visual></visual></gazebo>
+  <gazebo reference="base"><material>Gazebo/Green</material><turnGravityOff>false</turnGravityOff></gazebo>
+  <gazebo reference="trunk"><mu1>0.2</mu1><mu2>0.2</mu2><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="imu_link"><mu1>0.2</mu1><mu2>0.2</mu2><material>Gazebo/Red</material></gazebo>
+  <gazebo reference="FL_hip"><mu1>0.2</mu1><mu2>0.2</mu2><material>Gazebo/DarkGrey</material></gazebo>
+  <gazebo reference="FL_thigh"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide><material>Gazebo/DarkGrey</material><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="FL_calf"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide></gazebo>
+  <gazebo reference="FL_foot"><mu1>0.6</mu1><mu2>0.6</mu2><self_collide>1</self_collide><material>Gazebo/DarkGrey</material><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="FR_hip"><mu1>0.2</mu1><mu2>0.2</mu2><material>Gazebo/DarkGrey</material></gazebo>
+  <gazebo reference="FR_thigh"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide><material>Gazebo/DarkGrey</material><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="FR_calf"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide></gazebo>
+  <gazebo reference="FR_foot"><mu1>0.6</mu1><mu2>0.6</mu2><self_collide>1</self_collide><material>Gazebo/DarkGrey</material><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="RL_hip"><mu1>0.2</mu1><mu2>0.2</mu2><material>Gazebo/DarkGrey</material></gazebo>
+  <gazebo reference="RL_thigh"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide><material>Gazebo/DarkGrey</material><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="RL_calf"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide></gazebo>
+  <gazebo reference="RL_foot"><mu1>0.6</mu1><mu2>0.6</mu2><self_collide>1</self_collide><material>Gazebo/DarkGrey</material><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="RR_hip"><mu1>0.2</mu1><mu2>0.2</mu2><material>Gazebo/DarkGrey</material></gazebo>
+  <gazebo reference="RR_thigh"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide><material>Gazebo/DarkGrey</material><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="RR_calf"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide></gazebo>
+  <gazebo reference="RR_foot"><mu1>0.6</mu1><mu2>0.6</mu2><self_collide>1</self_collide><material>Gazebo/DarkGrey</material><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="imu_link"><gravity>true</gravity></gazebo>
+  <gazebo reference="FR_foot"><visual></visual></gazebo>
+  <gazebo reference="FL_foot"><visual></visual></gazebo>
+  <gazebo reference="RR_foot"><visual></visual></gazebo>
+  <gazebo reference="RL_foot"><visual></visual></gazebo>
+  <gazebo reference="base"><material>Gazebo/Green</material><turnGravityOff>false</turnGravityOff></gazebo>
+  <gazebo reference="trunk"><mu1>0.2</mu1><mu2>0.2</mu2><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="imu_link"><mu1>0.2</mu1><mu2>0.2</mu2><material>Gazebo/Red</material></gazebo>
+  <gazebo reference="FL_hip"><mu1>0.2</mu1><mu2>0.2</mu2><material>Gazebo/DarkGrey</material></gazebo>
+  <gazebo reference="FL_thigh"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide><material>Gazebo/DarkGrey</material><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="FL_calf"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide></gazebo>
+  <gazebo reference="FL_foot"><mu1>0.6</mu1><mu2>0.6</mu2><self_collide>1</self_collide><material>Gazebo/DarkGrey</material><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="FR_hip"><mu1>0.2</mu1><mu2>0.2</mu2><material>Gazebo/DarkGrey</material></gazebo>
+  <gazebo reference="FR_thigh"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide><material>Gazebo/DarkGrey</material><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="FR_calf"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide></gazebo>
+  <gazebo reference="FR_foot"><mu1>0.6</mu1><mu2>0.6</mu2><self_collide>1</self_collide><material>Gazebo/DarkGrey</material><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="RL_hip"><mu1>0.2</mu1><mu2>0.2</mu2><material>Gazebo/DarkGrey</material></gazebo>
+  <gazebo reference="RL_thigh"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide><material>Gazebo/DarkGrey</material><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="RL_calf"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide></gazebo>
+  <gazebo reference="RL_foot"><mu1>0.6</mu1><mu2>0.6</mu2><self_collide>1</self_collide><material>Gazebo/DarkGrey</material><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="RR_hip"><mu1>0.2</mu1><mu2>0.2</mu2><material>Gazebo/DarkGrey</material></gazebo>
+  <gazebo reference="RR_thigh"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide><material>Gazebo/DarkGrey</material><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="RR_calf"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide></gazebo>
+  <gazebo reference="RR_foot"><mu1>0.6</mu1><mu2>0.6</mu2><self_collide>1</self_collide><material>Gazebo/DarkGrey</material><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+</robot>

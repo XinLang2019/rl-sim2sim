@@ -1,1 +1,1 @@
-"""Offline migration tools; never imported by the existing control runtime."""
+"""Shared configuration, resources and simulation task lifecycle services."""

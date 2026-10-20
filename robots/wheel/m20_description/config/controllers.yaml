@@ -1,0 +1,21 @@
+# Copyright (c) 2024-2025 Ziqi Fan
+# SPDX-License-Identifier: Apache-2.0
+
+m20_gazebo:
+  joint_state_controller: {type: joint_state_controller/JointStateController, publish_rate: 1000}
+  FL_HipX_controller: {type: robot_controller/RobotJointController, joint: fl_hipx_joint}
+  FL_HipY_controller: {type: robot_controller/RobotJointController, joint: fl_hipy_joint}
+  FL_Knee_controller: {type: robot_controller/RobotJointController, joint: fl_knee_joint}
+  FL_Wheel_controller: {type: robot_controller/RobotJointController, joint: fl_wheel_joint}
+  FR_HipX_controller: {type: robot_controller/RobotJointController, joint: fr_hipx_joint}
+  FR_HipY_controller: {type: robot_controller/RobotJointController, joint: fr_hipy_joint}
+  FR_Knee_controller: {type: robot_controller/RobotJointController, joint: fr_knee_joint}
+  FR_Wheel_controller: {type: robot_controller/RobotJointController, joint: fr_wheel_joint}
+  HL_HipX_controller: {type: robot_controller/RobotJointController, joint: hl_hipx_joint}
+  HL_HipY_controller: {type: robot_controller/RobotJointController, joint: hl_hipy_joint}
+  HL_Knee_controller: {type: robot_controller/RobotJointController, joint: hl_knee_joint}
+  HL_Wheel_controller: {type: robot_controller/RobotJointController, joint: hl_wheel_joint}
+  HR_HipX_controller: {type: robot_controller/RobotJointController, joint: hr_hipx_joint}
+  HR_HipY_controller: {type: robot_controller/RobotJointController, joint: hr_hipy_joint}
+  HR_Knee_controller: {type: robot_controller/RobotJointController, joint: hr_knee_joint}
+  HR_Wheel_controller: {type: robot_controller/RobotJointController, joint: hr_wheel_joint}

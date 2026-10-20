@@ -12,21 +12,23 @@
 # 在本地开发目录执行；只检查，不复制、不联网
 python3 tools/export_public.py --check
 
-# 输出目录必须不存在；请使用新名字，避免和旧副本混合
-python3 tools/export_public.py --output tools/build/github-public
+# 输出目录必须不存在；放到开发项目外，避免产生一整份嵌套副本
+python3 tools/export_public.py --output ../rl-sim2sim-public-next
 
 # 独立复查清单、内容、私有资产指纹与文件完整性
-python3 tools/export_public.py --audit tools/build/github-public
+python3 tools/export_public.py --audit ../rl-sim2sim-public-next
 ```
 
 导出工具只复制允许的文件，不复制 `.git`、任务、视频、构建结果、私有发布规则或本机环境。文本及路径含受保护标识、文件与受保护模型/mesh 指纹相同、未经确认的二进制或图片发生变更时，导出会失败，不生成可发布目录。图片还需人工查看；内容扫描不能证明任意资产都获得了分发授权。
 
 副本中的 `PUBLIC_RELEASE.json` 只列公开文件的路径、体积和 SHA-256，不包含被排除文件的名称清单。公开副本不附带本机私有发布规则；其他维护者应制定自己的白名单，不能沿用不存在的本地授权。
 
+已经初始化 Git 的发布工作副本应独立保留；重新导出时使用新的目录名，不能覆盖其 `.git` 或混入开发历史。
+
 ## 验证副本
 
 ```bash
-cd tools/build/github-public
+cd ../rl-sim2sim-public-next
 ./build.sh core -DCMAKE_BUILD_TYPE=Release
 (cd tools/build/core && ctest --output-on-failure)
 tools/build/core/rlsim_policy_run \

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- Shared Gazebo Classic integration; robot geometry stays in robots/. -->
+  <xacro:macro name="rlsim_simulation" params="namespace base_link">
+    <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>${namespace}</robotNamespace>
+        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      </plugin>
+    </gazebo>
+    <gazebo reference="${base_link}">
+      <sensor name="imu" type="imu">
+        <always_on>true</always_on>
+        <update_rate>200</update_rate>
+        <plugin name="imu_ros" filename="libgazebo_ros_imu_sensor.so">
+          <robotNamespace>${namespace}</robotNamespace>
+          <topicName>imu</topicName>
+          <bodyName>${base_link}</bodyName>
+          <frameName>${base_link}</frameName>
+          <updateRateHZ>200</updateRateHZ>
+          <gaussianNoise>0.0</gaussianNoise>
+          <xyzOffset>0 0 0</xyzOffset>
+          <rpyOffset>0 0 0</rpyOffset>
+        </plugin>
+      </sensor>
+    </gazebo>
+  </xacro:macro>
+</robot>

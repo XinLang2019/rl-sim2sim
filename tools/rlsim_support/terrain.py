@@ -4,7 +4,7 @@ import random
 import xml.etree.ElementTree as ET
 
 from .catalog import keys
-from .legacy import ConfigError, number, integer
+from .validation import ConfigError, number, integer
 
 
 def load_world(path):

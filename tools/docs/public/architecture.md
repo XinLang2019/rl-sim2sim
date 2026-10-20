@@ -8,6 +8,7 @@
 | --- | --- |
 | 推理 | `rlsim/inference`：ONNX 执行器、观测注册表、历史、独立循环状态、动作映射 |
 | 控制 | `rlsim/control`：状态机、站立过渡、策略循环、控制器重载 |
+| 机器人资产 | `robots/{wheel,legged}`：统一的几何、Gazebo 入口、控制器和网格；通用插件在后端复用 |
 | 仿真 | `rlsim/interfaces/gazebo`：ROS 节点、关节控制插件、消息和 World |
 | 会话 | `tools/rlsim_support`、`tools/web/services`：资源目录、校验、任务、遥测、录制、生命周期 |
 | 网页 | `tools/web/frontend`：共享会话、双主题、控制器、双摇杆、信号与 Canvas 图表 |

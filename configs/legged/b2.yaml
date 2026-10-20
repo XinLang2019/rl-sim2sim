@@ -7,9 +7,9 @@ robot:
   variant: default
   package: b2_description
   package_path: robots/legged/b2_description
-  urdf: robots/legged/b2_description/urdf/b2_description.urdf
-  xacro: robots/legged/b2_description/xacro/robot.xacro
-  controllers: robots/legged/b2_description/config/robot_control.yaml
+  urdf: robots/legged/b2_description/urdf/robot.urdf
+  xacro: robots/legged/b2_description/urdf/gazebo.xacro
+  controllers: robots/legged/b2_description/config/controllers.yaml
   namespace: /b2_gazebo/
   model_name: b2_gazebo
   joints: [FL_hip_joint, FL_thigh_joint, FL_calf_joint, FR_hip_joint, FR_thigh_joint, FR_calf_joint, RL_hip_joint, RL_thigh_joint, RL_calf_joint,

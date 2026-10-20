@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<robot name="m20" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find m20_description)/urdf/robot.urdf" />
+  <xacro:include filename="$(find rlsim_gazebo)/models/robot_simulation.xacro" />
+  <xacro:rlsim_simulation namespace="/m20_gazebo" base_link="base" />
+  <gazebo reference="imu_link"><gravity>true</gravity></gazebo>
+  <gazebo reference="base"><material>Gazebo/Grey</material><turnGravityOff>false</turnGravityOff><mu1>0.2</mu1><mu2>0.2</mu2><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="imu_link"><mu1>0.2</mu1><mu2>0.2</mu2><material>Gazebo/Red</material></gazebo>
+  <gazebo reference="fl_hipx"><mu1>0.2</mu1><mu2>0.2</mu2></gazebo>
+  <gazebo reference="fl_hipy"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="fl_knee"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide></gazebo>
+  <gazebo reference="fl_wheel"><mu1>0.6</mu1><mu2>0.6</mu2><self_collide>1</self_collide><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="fr_hipx"><mu1>0.2</mu1><mu2>0.2</mu2></gazebo>
+  <gazebo reference="fr_hipx"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="fr_knee"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide></gazebo>
+  <gazebo reference="fr_wheel"><mu1>0.6</mu1><mu2>0.6</mu2><self_collide>1</self_collide><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="hl_hipx"><mu1>0.2</mu1><mu2>0.2</mu2></gazebo>
+  <gazebo reference="hl_hipy"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="hl_knee"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide></gazebo>
+  <gazebo reference="hl_wheel"><mu1>0.6</mu1><mu2>0.6</mu2><self_collide>1</self_collide><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="hr_hipx"><mu1>0.2</mu1><mu2>0.2</mu2></gazebo>
+  <gazebo reference="hr_hipy"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+  <gazebo reference="hr_knee"><mu1>0.2</mu1><mu2>0.2</mu2><self_collide>1</self_collide></gazebo>
+  <gazebo reference="hr_wheel"><mu1>0.6</mu1><mu2>0.6</mu2><self_collide>1</self_collide><kp value="1000000.0" /><kd value="1.0" /></gazebo>
+</robot>
